@@ -1,0 +1,61 @@
+# sdtmrag — конфигурация. Скопируйте в config.toml (или оставьте defaults).
+# API-ключ DeepSeek можно задать здесь или через env DEEPSEEK_API_KEY.
+
+inputs = "dicts"          # директория с исходными документами (.pdf/.xlsx/.xlsm)
+models_dir = "models"     # кэш ONNX-моделей (fastembed)
+store_path = "data/index.sqlite"
+
+[embedding]
+model = "bge-small-en-v1.5"   # bge-small-en-v1.5 (default) | bge-base-en-v1.5 | bge-large-en-v1.5 | bge-m3 | multilingual-e5-small | multilingual-e5-base | paraphrase-multilingual-minilm-l12-v2 | all-minilm-l6-v2
+max_length = 512
+intra_threads = 2             # ONNX-треды: снизьте до 1 на слабом ПК, чтобы index не вешал систему
+batch_size = 128              # для крупных моделей (bge-m3) уменьшите: 16-32
+
+[chunking]
+target_tokens = 900
+overlap_tokens = 150
+max_chunk_chars = 4000
+# Чанки короче этого размера склеиваются с соседними в пределах страницы и
+# раздела (0 — выключить склейку). Убирает неинформативные огрызки по 200-500
+# символов, которые возникают на коротких подразделах стандарта.
+min_chunk_chars = 600
+
+# Очистка текста, извлекаемого из PDF (см. src/clean.rs).
+# Для абляции «сырой текст против очищенного» удобно задавать отдельные
+# конфиги (примеры — в eval/configs/).
+[cleaning]
+enabled = true                # false — использовать сырой вывод pdf-extract
+normalize_unicode = true      # лигатуры, типографские тире/кавычки, nbsp, soft hyphen
+dehyphenate = true            # склейка слов, разорванных переносом
+strip_toc = true              # удаление строк оглавления (точечные выноски)
+remove_boilerplate = true     # колонтитулы, копирайты, повторяющиеся строки
+render_table_rows = true      # `a  b  c` -> `a | b | c` для схлопнутых таблиц
+table_gap_threshold = 2       # сколько разрывов из 2+ пробелов считать таблицей
+boilerplate_min_pages = 5     # строка-колонтитул встречается минимум на N страницах
+boilerplate_page_ratio = 0.15 # ... или на такой доле страниц документа
+
+[rerank]
+enabled = true
+model = "bge-reranker-base"    # bge-reranker-base | jina-reranker-v1-turbo-en | bge-reranker-v2-m3
+candidates = 50                # сколько кандидатов dense-поиска отдавать кросс-энкодеру
+final_top_k = 6
+intra_threads = 2
+# Длина пары «запрос + фрагмент» для кросс-энкодера. Стоимость реранка растёт
+# линейно и по числу кандидатов, и по этой длине: 50 кандидатов по 512 токенов
+# на слабом CPU — это порядка двух минут на один запрос, что неприемлемо для
+# интерактивной работы. Для практичных конфигураций уменьшайте candidates
+# и/или max_length (например, candidates = 20, max_length = 256).
+max_length = 512
+
+[deepseek]
+# api_key = "sk-..."           # или env DEEPSEEK_API_KEY
+base_url = "https://api.deepseek.com"
+chat_path = "/chat/completions"
+model = "deepseek-chat"
+temperature = 0.2
+max_tokens = 1500
+timeout_secs = 120
+
+[server]
+bind = "127.0.0.1"
+port = 8080

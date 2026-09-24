@@ -1,0 +1,17 @@
+# Абляция B: очищенный текст, параметры чанкинга как в raw.toml.
+# Отличие от raw.toml только в cleaning.enabled — изолирует эффект очистки.
+store_path = "data/index_clean.sqlite"
+inputs = "dicts"
+models_dir = "models"
+
+[cleaning]
+enabled = true
+
+[embedding]
+intra_threads = 4
+
+[chunking]
+target_tokens = 900
+overlap_tokens = 150
+max_chunk_chars = 4000
+min_chunk_chars = 0

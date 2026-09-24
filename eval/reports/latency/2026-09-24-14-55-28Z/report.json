@@ -1,0 +1,159 @@
+{
+  "generated_at": "2026-09-24 14:55:28Z",
+  "gold_items": 71,
+  "gold_files": [
+    "eval/gold.en.jsonl"
+  ],
+  "ks": [
+    5
+  ],
+  "store_path": "data/index_clean_tuned.sqlite=clean_tuned",
+  "configs": [
+    {
+      "label": "clean_tuned",
+      "store": "data/index_clean_tuned.sqlite",
+      "embedding_model": "bge-small-en-v1.5",
+      "rerank": true,
+      "rerank_model": "bge-reranker-base",
+      "chunks": 4111,
+      "retrieval": {
+        "n": 3,
+        "mrr": 0.5666666666666667,
+        "hit_at_k": {
+          "5": 1.0
+        },
+        "recall_at_k": {
+          "5": 1.0
+        },
+        "precision_at_k": {
+          "5": 0.20000000000000004
+        },
+        "ndcg_at_k": {
+          "5": 0.6725941869353331
+        }
+      },
+      "by_lang": {
+        "en": {
+          "n": 3,
+          "mrr": 0.5666666666666667,
+          "hit_at_k": {
+            "5": 1.0
+          },
+          "recall_at_k": {
+            "5": 1.0
+          },
+          "precision_at_k": {
+            "5": 0.20000000000000004
+          },
+          "ndcg_at_k": {
+            "5": 0.6725941869353331
+          }
+        }
+      },
+      "by_topic": {
+        "LB": {
+          "n": 3,
+          "mrr": 0.5666666666666667,
+          "hit_at_k": {
+            "5": 1.0
+          },
+          "recall_at_k": {
+            "5": 1.0
+          },
+          "precision_at_k": {
+            "5": 0.20000000000000004
+          },
+          "ndcg_at_k": {
+            "5": 0.6725941869353331
+          }
+        }
+      },
+      "latency_ms": {
+        "mean_ms": 25209.086833333335,
+        "p50_ms": 24873.0297,
+        "p95_ms": 26324.9554,
+        "max_ms": 26324.9554
+      },
+      "items": [
+        {
+          "id": "en-lb-01",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What is the role of the variable LBTESTCD in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "5": 1.0
+            },
+            "recall_at_k": {
+              "5": 1.0
+            },
+            "precision_at_k": {
+              "5": 0.2
+            },
+            "ndcg_at_k": {
+              "5": 1.0
+            }
+          },
+          "latency_ms": 24429.275400000002,
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 885"
+        },
+        {
+          "id": "en-lb-02",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What does the variable LBTEST contain in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 0.2,
+            "first_relevant_rank": 5,
+            "hits_total": 1,
+            "hit_at_k": {
+              "5": 1.0
+            },
+            "recall_at_k": {
+              "5": 1.0
+            },
+            "precision_at_k": {
+              "5": 0.2
+            },
+            "ndcg_at_k": {
+              "5": 0.38685280723454163
+            }
+          },
+          "latency_ms": 24873.0297,
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 199 | 6.3.5.3 Cell Phenotype Findings (CP)"
+        },
+        {
+          "id": "en-lb-03",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "Which values does the variable LBCAT take in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 0.5,
+            "first_relevant_rank": 2,
+            "hits_total": 1,
+            "hit_at_k": {
+              "5": 1.0
+            },
+            "recall_at_k": {
+              "5": 1.0
+            },
+            "precision_at_k": {
+              "5": 0.2
+            },
+            "ndcg_at_k": {
+              "5": 0.6309297535714575
+            }
+          },
+          "latency_ms": 26324.9554,
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 29 | 4.2.6 Grouping Variables and Categorization"
+        }
+      ]
+    }
+  ]
+}

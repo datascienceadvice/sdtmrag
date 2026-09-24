@@ -1,0 +1,2227 @@
+{
+  "generated_at": "2026-09-24 13:41:24Z",
+  "gold_items": 48,
+  "gold_files": [
+    "eval/gold.judge.jsonl"
+  ],
+  "ks": [
+    1,
+    5,
+    10
+  ],
+  "store_path": "data/index_clean_tuned.sqlite=clean+tuned",
+  "configs": [
+    {
+      "label": "clean+tuned",
+      "store": "data/index_clean_tuned.sqlite",
+      "embedding_model": "bge-small-en-v1.5",
+      "rerank": true,
+      "rerank_model": "bge-reranker-base",
+      "chunks": 4111,
+      "retrieval": {
+        "n": 44,
+        "mrr": 0.6462121212121211,
+        "hit_at_k": {
+          "1": 0.5,
+          "5": 0.8636363636363636,
+          "10": 0.8636363636363636
+        },
+        "recall_at_k": {
+          "1": 0.5,
+          "5": 0.8636363636363636,
+          "10": 0.8636363636363636
+        },
+        "precision_at_k": {
+          "1": 0.5,
+          "5": 0.2727272727272727,
+          "10": 0.1909090909090909
+        },
+        "ndcg_at_k": {
+          "1": 0.5,
+          "5": 0.7008846864510624,
+          "10": 0.7008846864510624
+        }
+      },
+      "by_lang": {
+        "en": {
+          "n": 33,
+          "mrr": 0.7,
+          "hit_at_k": {
+            "1": 0.5454545454545454,
+            "5": 0.9393939393939394,
+            "10": 0.9393939393939394
+          },
+          "recall_at_k": {
+            "1": 0.5454545454545454,
+            "5": 0.9393939393939394,
+            "10": 0.9393939393939394
+          },
+          "precision_at_k": {
+            "1": 0.5454545454545454,
+            "5": 0.3090909090909092,
+            "10": 0.22727272727272727
+          },
+          "ndcg_at_k": {
+            "1": 0.5454545454545454,
+            "5": 0.7599111120213282,
+            "10": 0.7599111120213282
+          }
+        },
+        "ru": {
+          "n": 11,
+          "mrr": 0.4848484848484848,
+          "hit_at_k": {
+            "1": 0.36363636363636365,
+            "5": 0.6363636363636364,
+            "10": 0.6363636363636364
+          },
+          "recall_at_k": {
+            "1": 0.36363636363636365,
+            "5": 0.6363636363636364,
+            "10": 0.6363636363636364
+          },
+          "precision_at_k": {
+            "1": 0.36363636363636365,
+            "5": 0.1636363636363636,
+            "10": 0.0818181818181818
+          },
+          "ndcg_at_k": {
+            "1": 0.36363636363636365,
+            "5": 0.523805409740265,
+            "10": 0.523805409740265
+          }
+        }
+      },
+      "by_topic": {
+        "LB": {
+          "n": 18,
+          "mrr": 0.7240740740740741,
+          "hit_at_k": {
+            "1": 0.5555555555555556,
+            "5": 0.9444444444444444,
+            "10": 0.9444444444444444
+          },
+          "recall_at_k": {
+            "1": 0.5555555555555556,
+            "5": 0.9444444444444444,
+            "10": 0.9444444444444444
+          },
+          "precision_at_k": {
+            "1": 0.5555555555555556,
+            "5": 0.18888888888888894,
+            "10": 0.09444444444444447
+          },
+          "ndcg_at_k": {
+            "1": 0.5555555555555556,
+            "5": 0.7800834208384351,
+            "10": 0.7800834208384351
+          }
+        },
+        "datasets": {
+          "n": 5,
+          "mrr": 0.6,
+          "hit_at_k": {
+            "1": 0.4,
+            "5": 0.8,
+            "10": 0.8
+          },
+          "recall_at_k": {
+            "1": 0.4,
+            "5": 0.8,
+            "10": 0.8
+          },
+          "precision_at_k": {
+            "1": 0.4,
+            "5": 0.16,
+            "10": 0.08
+          },
+          "ndcg_at_k": {
+            "1": 0.4,
+            "5": 0.6523719014285831,
+            "10": 0.6523719014285831
+          }
+        },
+        "general-model": {
+          "n": 9,
+          "mrr": 0.45185185185185184,
+          "hit_at_k": {
+            "1": 0.2222222222222222,
+            "5": 0.8888888888888888,
+            "10": 0.8888888888888888
+          },
+          "recall_at_k": {
+            "1": 0.2222222222222222,
+            "5": 0.8888888888888888,
+            "10": 0.8888888888888888
+          },
+          "precision_at_k": {
+            "1": 0.2222222222222222,
+            "5": 0.17777777777777776,
+            "10": 0.08888888888888888
+          },
+          "ndcg_at_k": {
+            "1": 0.2222222222222222,
+            "5": 0.5595072357346665,
+            "10": 0.5595072357346665
+          }
+        },
+        "pdf-sections": {
+          "n": 12,
+          "mrr": 0.6944444444444445,
+          "hit_at_k": {
+            "1": 0.6666666666666666,
+            "5": 0.75,
+            "10": 0.75
+          },
+          "recall_at_k": {
+            "1": 0.6666666666666666,
+            "5": 0.75,
+            "10": 0.75
+          },
+          "precision_at_k": {
+            "1": 0.6666666666666666,
+            "5": 0.5166666666666666,
+            "10": 0.45833333333333326
+          },
+          "ndcg_at_k": {
+            "1": 0.6666666666666666,
+            "5": 0.7083333333333334,
+            "10": 0.7083333333333334
+          }
+        }
+      },
+      "latency_ms": {
+        "mean_ms": 41515.66652083334,
+        "p50_ms": 42545.7028,
+        "p95_ms": 47211.3465,
+        "max_ms": 50614.9646
+      },
+      "answers": {
+        "n": 48,
+        "faithfulness": 0.9989583333333334,
+        "citation_accuracy": 0.9979166666666667,
+        "correctness": 0.9791666666666666,
+        "refusals_correct": 4,
+        "refusals_total": 4
+      },
+      "items": [
+        {
+          "id": "en-lb-01",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What is the role of the variable LBTESTCD in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 50614.9646,
+          "answer": "The variable **LBTESTCD** (Lab Test or Examination Short Name) has the role of **Topic** in the LB domain [1][2].\n\nAdditional details from the documentation:\n- It is a Char variable [1][2].\n- It has CDISC CT Codelist Code C65047 [1].\n- Core status: **Req** (Required) [1][2].\n- It represents the short name of the measurement, test, or examination described in LBTEST, and can be used as a column name when converting a dataset from vertical to horizontal format [1][2].\n- Constraints: the value cannot be longer than 8 characters, cannot start with a number, and cannot contain characters other than letters, numbers, or underscores (e.g., \"ALT\", \"LDH\") [1][2].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All claims in the system answer are directly supported by Excerpts 1 and 2, which state LBTESTCD's role is Topic, type Char, codelist C65047, core Req, and provide the same definition and constraints. Citations [1] and [2] correctly point to the supporting excerpts. The answer fully agrees with the reference answer."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 885"
+        },
+        {
+          "id": "en-lb-03",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "Which values does the variable LBCAT take in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 0.5,
+            "first_relevant_rank": 2,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.6309297535714575,
+              "10": 0.6309297535714575
+            }
+          },
+          "latency_ms": 41500.641899999995,
+          "answer": "Based on the provided documentation, LBCAT (Category for Lab Test) is a sponsor-assigned grouping qualifier, and the excerpts give examples rather than an exhaustive controlled list.\n\n- **Definition/role**: LBCAT is a Grouping Qualifier in the LB domain, used to define a category of related records across subjects ([2]).\n- **Example values**: \"HEMATOLOGY\", \"URINALYSIS\", \"CHEMISTRY\" ([2]).\n- **Illustrative use**: In the LB example, LBCAT is populated with \"CHEMISTRY\" ([6]).\n- **General rule**: Grouping variables such as --CAT are assigned by sponsors to categorize topic-variable values; e.g., a lab record with LBTEST = \"SODIUM\" might have LBCAT = \"CHEMISTRY\" and LBSCAT = \"ELECTROLYTES\" ([1]).\n\nThe excerpts do not provide a complete controlled terminology codelist for LBCAT; only the example values above are given.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All claims in the answer are directly supported by the excerpts: LBCAT is a Grouping Qualifier used to define a category of related records across subjects with examples HEMATOLOGY, URINALYSIS, CHEMISTRY ([2]); the example shows LBCAT = CHEMISTRY ([6]); and the general rule about sponsor-assigned --CAT values with the SODIUM/CHEMISTRY/ELECTROLYTES example is in [1]. Citations are accurate. The answer agrees with the reference answer and correctly notes that only examples, not an exhaustive codelist, are provided."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 29 | 4.2.6 Grouping Variables and Categorization"
+        },
+        {
+          "id": "en-lb-05",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What does the variable LBORRES represent in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 0.2,
+            "first_relevant_rank": 5,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.38685280723454163,
+              "10": 0.38685280723454163
+            }
+          },
+          "latency_ms": 41523.8752,
+          "answer": "**LBORRES — Result or Finding in Original Units**\n\n- **Variable Label:** Result or Finding in Original Units [5]\n- **Type:** Char [5]\n- **Role:** Result Qualifier [5]\n- **Core:** Exp (Expected) [5]\n- **Definition:** \"Result of the measurement or finding as originally received or collected.\" [5]\n\nAdditional context from the LB domain specification:\n\n- LBORRESU (Original Units) is the unit for LBORRES; e.g., \"g/L\" [2][4].\n- LBSTRESC contains the result value for all findings, copied or derived from LBORRES in a standard format or standard units [3].\n- If LBDRVFL=\"Y\" (derived record), LBORRES may be null, with LBSTRESC and (if numeric) LBSTRESN having the derived value [1][6].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All claims in the answer are directly supported by the excerpts: Excerpt 5 provides the label, type, role, core, and definition of LBORRES; Excerpts 2 and 4 support LBORRESU as the unit for LBORRES; Excerpt 3 supports LBSTRESC being copied/derived from LBORRES; Excerpts 1 and 6 support the LBDRVFL='Y' note about LBORRES being null. Citation markers correctly correspond to the supporting excerpts. The answer fully agrees with the reference answer."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 241 | 6.3.5.6 Laboratory Test Results (LB)"
+        },
+        {
+          "id": "en-lb-07",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What is the variable LBORNRLO used for in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 39351.265400000004,
+          "answer": "**LBORNRLO — Reference Range Lower Limit in Orig Unit** ([1])\n\n- **Role:** Variable Qualifier ([1])\n- **Type:** Char ([1])\n- **Core:** Exp ([1])\n- **Purpose:** It represents the lower end of the reference range for a continuous measurement in original units. It should be populated only for continuous results ([1]).\n\nAdditionally, LBORNRLO is one of the variables that defines the reference range used by LBNRIND (Reference Range Indicator), which indicates where a value falls with respect to the reference range defined by LBORNRLO and LBORNRHI (or by the standard-unit equivalents LBSTNRLO/LBSTNRHI, or by LBSTNRC) ([2]).",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts: Excerpt 1 provides the label, role (Variable Qualifier), type (Char), core (Exp), and purpose (lower end of reference range for continuous measurement in original units, populated only for continuous results). Excerpt 2 supports the additional claim that LBORNRLO is one of the variables defining the reference range used by LBNRIND. Citations [1] and [2] correctly map to the supporting excerpts. The answer agrees with the reference answer and adds a supported detail."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 897"
+        },
+        {
+          "id": "en-lb-09",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What does the variable LBSTRESC contain in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 0.5,
+            "first_relevant_rank": 2,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.6309297535714575,
+              "10": 0.6309297535714575
+            }
+          },
+          "latency_ms": 42012.2926,
+          "answer": "**LBSTRESC** (Character Result/Finding in Std Format) is a Result Qualifier variable in the LB domain. It contains the result value for all findings, copied or derived from LBORRES in a standard format or standard units [1][2]. It stores all results or findings in character format; if results are numeric, they should also be stored in numeric format in LBSTRESN [1][2]. For example, if a test has results \"NONE\", \"NEG\", and \"NEGATIVE\" in LBORRES and these results effectively have the same meaning, they could be represented in standard format in LBSTRESC as \"NEGATIVE\" [1][2].\n\nAdditional characteristics:\n- Type: Char; Core: Exp [2].\n- LBSTRESU is the standardized unit used for LBSTRESC or LBSTRESN [1][5].\n- LBSTNRLO is the lower end of the reference range for continuous measurements for LBSTRESC/LBSTRESN in standardized units [1][6].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts: the definition of LBSTRESC, its character storage, the LBSTRESN numeric counterpart, the NONE/NEG/NEGATIVE example, Type Char, Core Exp, and the related LBSTRESU and LBSTNRLO descriptions. Citations [1] and [2] correctly point to the LBSTRESC definition in the PDF and XLSX excerpts, [5] to LBSTRESU, and [6] to LBSTNRLO. The answer agrees fully with the reference answer."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 241 | 6.3.5.6 Laboratory Test Results (LB)"
+        },
+        {
+          "id": "en-lb-11",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "Which units does the variable LBSTRESU hold in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 41303.9932,
+          "answer": "LBSTRESU holds the **standardized unit used for LBSTRESC or LBSTRESN** ([1], [2]).\n\nAdditional details from the documentation:\n- Variable Label: Standard Units ([1])\n- Type: Char ([1])\n- Role: Variable Qualifier ([1])\n- CDISC CT Codelist Code(s): C71620 ([1])\n- Core: Exp ([1])\n\nThe excerpts do not enumerate the specific unit values contained in codelist C71620.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer correctly states that LBSTRESU holds the standardized unit used for LBSTRESC or LBSTRESN, matching the reference answer and supported by excerpts 1 and 2. All additional claims (label, type, role, codelist code, core) are directly supported by excerpt 1, and the citations [1] and [2] accurately point to supporting excerpts. The note that specific unit values in codelist C71620 are not enumerated is accurate."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 902"
+        },
+        {
+          "id": "en-lb-13",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What is the variable LBSTNRHI used for in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 44706.6457,
+          "answer": "**LBSTNRHI — Reference Range Upper Limit-Std Units**\n\n**Purpose:** LBSTNRHI holds the upper end of the reference range for continuous measurements in standardized units ([1], [2]).\n\n**Key attributes:**\n- **Type:** Num ([1], [2])\n- **Role:** Variable Qualifier ([1], [2])\n- **Core:** Exp (Expected) ([1], [2])\n\n**Usage rules:**\n- Should be populated **only for continuous results** ([1], [2]).\n- It defines the standardized-unit reference range together with LBSTNRLO (Reference Range Lower Limit-Std Units), which holds the lower end of the same range ([2]).\n- It is one of the reference ranges used to determine LBNRIND (Reference Range Indicator), which indicates where a value falls with respect to the range defined by LBORNRLO/LBORNRHI, LBSTNRLO/LBSTNRHI, or LBSTNRC ([2], [3]).\n- For lab tests without continuous numeric results (e.g., dipstick urine protein, descriptive tests), LBSTNRHI should be **null**; LBSTNRC is used instead for character/ordinal normal ranges ([4]).\n\n**Example:** In the LB example dataset, LBSTNRHI is populated (e.g., 5, 160) alongside LBSTNRLO for quantitative chemistry tests ([5]).",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts: LBSTNRHI is the upper end of the reference range for continuous measurements in standardized units (Excerpts 1, 2), Type Num, Role Variable Qualifier, Core Exp (Excerpts 1, 2), populated only for continuous results (Excerpts 1, 2), paired with LBSTNRLO (Excerpt 2), used in defining LBNRIND (Excerpts 2, 3), and should be null for non-continuous tests where LBSTNRC is used (Excerpt 4). The example values (5, 160) appear in Excerpt 5. Citation markers [1]-[5] correctly correspond to the supporting excerpts. The answer agrees with the reference answer and adds accurate detail."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 904"
+        },
+        {
+          "id": "en-lb-15",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What does the variable LBSPEC describe in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 0.5,
+            "first_relevant_rank": 2,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.6309297535714575,
+              "10": 0.6309297535714575
+            }
+          },
+          "latency_ms": 40432.9921,
+          "answer": "Based on the provided documentation, **LBSPEC** (Specimen Type) is a Record Qualifier variable in the LB domain that \"Defines the type of specimen used for a measurement,\" with examples such as \"SERUM\", \"PLASMA\", and \"URINE\" [2]. It is a character variable associated with CDISC controlled terminology codelist C78734 and has Core designation \"Perm\" [2].\n\nAdditionally, LBSPEC is identified as one of the aspects of a test associated with a LOINC code (along with LBTEST, LBMETHOD, and LBORRESU), and it is only required to be populated when necessary to provide a semantically meaningful distinction between records with different LBLOINC values [1].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All claims in the answer are directly supported by the excerpts: Excerpt 2 provides the label 'Specimen Type', role 'Record Qualifier', CDISC Notes 'Defines the type of specimen used for a measurement. Examples: SERUM, PLASMA, URINE.', type Char, codelist C78734, and Core 'Perm'. Excerpt 1 supports the LOINC association claim. Citations [1] and [2] correctly point to the supporting excerpts. The answer agrees with the reference answer and adds accurate detail."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 241 | 6.3.5.6 Laboratory Test Results (LB)"
+        },
+        {
+          "id": "en-lb-17",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What does the variable LBANMETH describe in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 42649.665400000005,
+          "answer": "LBANMETH (Analysis Method) is a Record Qualifier variable in the LB domain that describes the analysis method applied to obtain a summarized result. Specifically, it describes \"the method of secondary processing applied to a complex observation result (e.g., a calculation used to measure eGFR)\" [1][2]. Its Core designation is Perm [1][2].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer accurately states that LBANMETH is a Record Qualifier variable in the LB domain describing the analysis method applied to obtain a summarized result, including the secondary processing description and eGFR example, and that its Core designation is Perm. All claims are directly supported by Excerpts 1 and 2, which are correctly cited. The answer fully agrees with the reference answer."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 915"
+        },
+        {
+          "id": "en-lb-19",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What does the variable LBDTC record in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 41680.461299999995,
+          "answer": "LBDTC records the **Date/Time of Specimen Collection** in the LB domain [1].\n\n- **Variable Label:** Date/Time of Specimen Collection [1]\n- **Type:** Char, with described value domain ISO 8601 datetime or interval [1]\n- **Role:** Timing [1]\n- **CDISC Notes:** Date/time of specimen collection represented in ISO 8601 character format [1]\n- **Core:** Exp [1]\n\nAdditionally, for lab tests where the specimen is collected over time (e.g., 24-hour urine collection), the **start date/time of the collection** goes into LBDTC [3].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All claims in the answer are directly supported by the excerpts: Excerpt 1 provides the label, type, value domain, role, CDISC notes, and core status for LBDTC, and Excerpt 3 supports the additional statement about start date/time for over-time collections. Citation [1] correctly points to Excerpt 1 and [3] to Excerpt 3. The answer agrees with the reference answer."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 929"
+        },
+        {
+          "id": "en-lb-21",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What is the variable LBFAST used for in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 43310.3403,
+          "answer": "**LBFAST** in the LB domain is used as follows:\n\n- **Variable Label:** Fasting Status [1]\n- **Role:** Record Qualifier [1]\n- **Type:** Char [1]\n- **Controlled Terminology:** Codelist C66742 [1]\n- **Purpose:** Indicator used to identify fasting status. Examples: \"Y\", \"N\". [1]\n- **Core:** Perm [1]\n\nThe provided documentation does not contain any additional assumptions or usage notes specific to LBFAST beyond the above.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All claims in the system answer (label, role, type, codelist, purpose, core) are directly supported by Excerpt 1, and the citation [1] correctly points to that excerpt. The answer matches the reference answer exactly."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 919"
+        },
+        {
+          "id": "en-lb-23",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What is the variable LBREASND used for in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 47211.3465,
+          "answer": "**LBREASND** (Reason Test Not Done) is a Record Qualifier variable in the LB domain that describes why a measurement or test was not performed. Examples include \"BROKEN EQUIPMENT\", \"SUBJECT REFUSED\", or \"SPECIMEN LOST\". It is used in conjunction with **LBSTAT** when the value is \"NOT DONE\". Its Core designation is Perm (Permissible) [1].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer (label, role, description, examples, use with LBSTAT when NOT DONE, Core=Perm) are directly supported by Excerpt 1. The citation [1] correctly points to that excerpt. The answer fully agrees with the reference answer."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 908"
+        },
+        {
+          "id": "en-lb-25",
+          "lang": "en",
+          "topic": "LB",
+          "answerable": true,
+          "question": "What does the variable LBLOINC contain in the LB domain?",
+          "retrieval": {
+            "reciprocal_rank": 0.5,
+            "first_relevant_rank": 2,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.6309297535714575,
+              "10": 0.6309297535714575
+            }
+          },
+          "latency_ms": 38826.639200000005,
+          "answer": "Based on the provided documentation, **LBLOINC** in the LB domain contains a LOINC code as follows:\n\n- **Definition**: It contains a code from the Logical Observation Identifiers Names and Codes (LOINC) database that identifies a specific laboratory test [1]. It is described as the \"Code for the lab test from the LOINC code system\" [2].\n\n- **Variable attributes** [2]:\n  - **Variable Label**: LOINC Code\n  - **Type**: Char\n  - **Described Value Domain**: LOINC\n  - **Role**: Synonym Qualifier\n  - **Core**: Perm\n\n- **Sponsor responsibility**: The sponsor is expected to provide the dictionary name and version used to map the terms, utilizing the Define-XML external codelist attributes [2].\n\n- **Mapping guidance**: The LOINC to LB Mapping Codetable (available at the CDISC controlled terminology site) may be used to identify appropriate CDISC CT values for a test with a particular LOINC code [1]. In addition to LBTEST, LBSPEC, LBMETHOD, and LBORRESU, the aspects of a test associated with a LOINC code may be represented in LBTPT, LBANMETH, LBPOS, LBLOC, LBFAST, LBTSTCND, LBBDAGNT, LBTSTOPO, LBRESSCL, LBRESTYP, LBCOLSRT, LBLLOD, LBPTFL, and LBPDUR; these additional variables are only required to be populated when necessary to provide a semantically meaningful distinction between records with different LBLOINC values [1].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts. Excerpt 1 supports the definition (code from LOINC database identifying a specific lab test), the LOINC to LB Mapping Codetable guidance, and the list of additional variables. Excerpt 2 supports the variable attributes (label 'LOINC Code', type Char, domain LOINC, role Synonym Qualifier, core Perm) and the sponsor responsibility for dictionary name/version via Define-XML external codelist attributes. Citation markers [1] and [2] are correctly attached to the claims they support. The answer fully agrees with the reference answer and adds no unsupported claims."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 241 | 6.3.5.6 Laboratory Test Results (LB)"
+        },
+        {
+          "id": "en-ds-01",
+          "lang": "en",
+          "topic": "datasets",
+          "answerable": true,
+          "question": "What is the structure of the LB dataset and what does it contain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 45332.536400000005,
+          "answer": "Based on the provided documentation excerpts:\n\n**Structure:** The LB dataset has the structure \"One record per lab test per time point per visit per subject\" ([1], [2]). It is classified as a **Findings** domain ([1], [2]).\n\n**Dataset Label:** Laboratory Test Results ([1], [2]).\n\n**Content:** LB is a findings domain that contains laboratory test data such as hematology, clinical chemistry, and urinalysis. It does **not** include microbiology or pharmacokinetic data, which are stored in separate domains ([2]).\n\n**Variables (examples from the excerpts):**\n- Identifiers: STUDYID, DOMAIN, USUBJID, LBSEQ, LBGRPID, LBREFID (Specimen ID), LBSPID (Sponsor-Defined Identifier) ([2]).\n- Topic: LBTESTCD (Lab Test or Examination Short Name) ([2]).\n- Grouping Qualifier: LBSCAT (Subcategory for Lab Test; e.g., \"DIFFERENTIAL\", \"COAGULATION\", \"LIVER FUNCTION\", \"ELECTROLYTES\"; Core: Perm) ([5]).\n- Variable Qualifier: LBSTNRHI (Reference Range Upper Limit-Std Units; Num; Core: Exp; populated only for continuous results) ([3]).\n\nNote: The excerpts do not provide the complete variable list for the LB dataset.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts: the structure, class, and label come from Excerpts 1 and 2; the content description (hematology, clinical chemistry, urinalysis; excludes microbiology and pharmacokinetics) comes from Excerpt 2; the listed variables and their attributes are supported by Excerpts 2, 3, and 5. Citation markers correctly point to the supporting excerpts. The answer agrees with the reference answer and adds accurate supplementary detail without contradicting it."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Datasets | row 26"
+        },
+        {
+          "id": "en-ds-03",
+          "lang": "en",
+          "topic": "datasets",
+          "answerable": true,
+          "question": "What is the MS dataset used for?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 43442.3237,
+          "answer": "The MS dataset is the **Microbiology Susceptibility** dataset, belonging to the **Findings** class. Its structure is **one record per microbiology susceptibility test (or other organism-related finding) per organism found in MB** [1].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer correctly identifies MS as the Microbiology Susceptibility dataset in the Findings class with the structure 'one record per microbiology susceptibility test (or other organism-related finding) per organism found in MB'. All claims are directly supported by Excerpt 1, and the citation [1] accurately points to that excerpt. The answer fully agrees with the reference answer."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Datasets | row 30"
+        },
+        {
+          "id": "en-ds-05",
+          "lang": "en",
+          "topic": "datasets",
+          "answerable": true,
+          "question": "What is the GF dataset used for?",
+          "retrieval": {
+            "reciprocal_rank": 0.5,
+            "first_relevant_rank": 2,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.6309297535714575,
+              "10": 0.6309297535714575
+            }
+          },
+          "latency_ms": 43109.828,
+          "answer": "The GF dataset is the **Genomics Findings** dataset. It belongs to the **Findings** class and has the structure: **one record per finding per observation per biospecimen per subject** [Excerpt 2].\n\nIt is a specimen-based findings domain (section 6.3.5.4, Genomics Findings (GF)) [Excerpt 4].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All claims in the answer are directly supported by the excerpts: Excerpt 2 states GF is 'Genomics Findings' in the Findings class with the structure 'One record per finding per observation per biospecimen per subject', and Excerpt 4 confirms it is a specimen-based findings domain (section 6.3.5.4 Genomics Findings (GF)). Citations are accurate and the answer agrees with the reference answer."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 758"
+        },
+        {
+          "id": "en-ds-07",
+          "lang": "en",
+          "topic": "datasets",
+          "answerable": true,
+          "question": "What is the BS dataset used for?",
+          "retrieval": {
+            "reciprocal_rank": 0.5,
+            "first_relevant_rank": 2,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.6309297535714575,
+              "10": 0.6309297535714575
+            }
+          },
+          "latency_ms": 46003.714199999995,
+          "answer": "The BS dataset is used for **Biospecimen Findings** ([2]). It is a **Findings** class dataset with the structure \"One record per measurement per biospecimen identifier per subject\" ([2]).\n\nIts topic variable is **BSTESTCD** (Biospecimen Test Short Name), with examples including VOLUME and RIN ([4]).",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All claims in the answer are directly supported by the excerpts: Excerpt 2 states BS is 'Biospecimen Findings', class Findings, with structure 'One record per measurement per biospecimen identifier per subject'; Excerpt 4 states BSTESTCD is the topic variable (Role: Topic) with examples VOLUME and RIN. Citations [2] and [4] correctly point to the supporting excerpts. The answer agrees with the reference answer and adds accurate supporting detail."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 507"
+        },
+        {
+          "id": "en-gen-01",
+          "lang": "en",
+          "topic": "general-model",
+          "answerable": true,
+          "question": "What does the variable STUDYID identify in SDTM?",
+          "retrieval": {
+            "reciprocal_rank": 0.2,
+            "first_relevant_rank": 5,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.38685280723454163,
+              "10": 0.38685280723454163
+            }
+          },
+          "latency_ms": 16575.1469,
+          "answer": "STUDYID is the Study Identifier. It is defined as \"A sequence of characters used by the sponsor to uniquely identify the study\" ([1], [2], [3], [4], [5], [6]). It has Variable Label \"Study Identifier\", Type Char, Role Identifier, and C-Code C83082 ([1], [2], [3], [4], [5], [6]). In the DR domain, the Notes further state: \"Study identifier of the domain record(s)\" ([1]).",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer accurately states that STUDYID is the Study Identifier, defined as 'A sequence of characters used by the sponsor to uniquely identify the study,' with Type Char, Role Identifier, and C-Code C83082, all directly supported by the excerpts. The DR domain note is also correctly cited. All claims match the reference answer and the documentation."
+          },
+          "top1": "SDTM_v2.1.xlsx | Variables | row 524"
+        },
+        {
+          "id": "en-gen-03",
+          "lang": "en",
+          "topic": "general-model",
+          "answerable": true,
+          "question": "What is the variable USUBJID used for in SDTM?",
+          "retrieval": {
+            "reciprocal_rank": 0.5,
+            "first_relevant_rank": 2,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.6309297535714575,
+              "10": 0.6309297535714575
+            }
+          },
+          "latency_ms": 24742.082199999997,
+          "answer": "USUBJID (Unique Subject Identifier) is defined as \"A sequence of characters used to uniquely identify a subject across all studies for all applications or submissions involving the product\" [2][4][5][6]. It has Type Char, Role Identifier, and Variable C-Code C69256 [2][4][5][6].\n\nIt appears in multiple classes/datasets, including General Observations [2], Special-Purpose (SJ) [4], Relationship (DR) [5], and Special-Purpose (DM) [6].\n\nAdditionally, USUBJID is referenced as a value used to populate RSUBJID (Related Subject or Pool Identifier): RSUBJID \"will be populated with either the USUBJID of the related subject or the POOLID of the related pool\" [1], and \"RSUBJID may be populated with the USUBJID of the related subject or the POOLID of the related pool\" [3].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the system answer are directly supported by the excerpts. The definition, type Char, role Identifier, and C-Code C69256 are confirmed in excerpts [2], [4], [5], and [6]. The appearance in General Observations [2], Special-Purpose SJ [4], Relationship DR [5], and Special-Purpose DM [6] is accurate. The RSUBJID references are correctly cited to [1] and [3]. Citation markers accurately correspond to the supporting excerpts. The answer agrees with the reference answer, which states USUBJID is the Unique Subject Identifier (Char, role: Identifier) defined as a sequence of characters used to uniquely identify a subject across all studies for all applications or submissions involving the product."
+          },
+          "top1": "SDTM_v2.1.xlsx | Variables | row 516"
+        },
+        {
+          "id": "en-gen-05",
+          "lang": "en",
+          "topic": "general-model",
+          "answerable": true,
+          "question": "What does the variable --TESTCD contain in SDTM?",
+          "retrieval": {
+            "reciprocal_rank": 0.2,
+            "first_relevant_rank": 5,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.38685280723454163,
+              "10": 0.38685280723454163
+            }
+          },
+          "latency_ms": 39170.679,
+          "answer": "Based on the provided documentation, **--TESTCD** contains the following:\n\n**Definition:** The standardized or dictionary-derived short sequence of characters used to represent the measurement, test, or examination. [5]\n\n**Label:** Short Name of Measurement, Test, or Exam. [5]\n\n**Role:** Topic (in the Findings class). [5]\n\n**Type:** Char. [5]\n\n**Relationship to --TEST:** --TESTCD is the \"short\" version of --TEST (the variable whose name ends in \"CD\" is the short version of the associated variable without the \"CD\" suffix). [3] It is qualified by --TEST, --TSTDTL, --LLOD, and --COLSRT. [1][2][4][6]\n\n**Format restrictions:** Values of --TESTCD must be limited to 8 characters and cannot start with a number, nor can they contain characters other than letters, numbers, or underscores (to avoid possible incompatibility with SAS v5 transport files). [3] The short value can be up to 8 characters. [5]\n\n**Usage note:** Used as a column name when converting a dataset from a vertical format to a horizontal format. [5]\n\n**Examples:** \"PLAT\", \"SYSBP\", \"RRMIN\", \"EYEEXAM\". [5]",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the system answer are directly supported by the excerpts: definition, label, role, type, and examples come from Excerpt 5; the relationship to --TEST and the 8-character/character restrictions come from Excerpt 3; the qualification relationships are supported by Excerpts 1, 2, 4, and 6. Citation markers correctly point to the supporting excerpts. The answer agrees with the reference answer and adds accurate supplementary detail."
+          },
+          "top1": "SDTM_v2.1.xlsx | Variables | row 169"
+        },
+        {
+          "id": "en-gen-07",
+          "lang": "en",
+          "topic": "general-model",
+          "answerable": true,
+          "question": "What does the variable --ORRES contain in SDTM?",
+          "retrieval": {
+            "reciprocal_rank": 0.3333333333333333,
+            "first_relevant_rank": 3,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.5,
+              "10": 0.5
+            }
+          },
+          "latency_ms": 43854.3441,
+          "answer": "Based on the provided documentation, `--ORRES` is defined as follows:\n\n- **Variable Label:** Result or Finding in Original Units [3]\n- **Definition:** The result of the measurement, test, or examination, as originally received or collected [3]\n- **Type:** Char [3]\n- **Role:** Result Qualifier [3]\n- **Class:** Findings [3]\n- **Variable C-Code:** C117221 [3]\n- **Examples:** \"120\", \"<1\", \"POS\" [3]\n\nAdditionally, `--ORRES` is qualified by several other variables:\n- `--ORNRLO` (Normal Range Lower Limit-Original Units) [1]\n- `--ORNRHI` (Normal Range Upper Limit-Original Units) [2]\n- `--ORREF` (Reference Result in Original Units), which uses the same units as `--ORRES`, if applicable [4]\n- `--MODIFY` (Modified Result Term) [5]\n- `--GENLOC` (Genetic Location), which specifies the location within a sequence for the observed value in `--ORRES` (GF domain only) [6]",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts, particularly Excerpt 3 which defines --ORRES with label, definition, type, role, class, C-code, and examples. The additional qualifier variables are correctly cited to their respective excerpts. The answer fully agrees with the reference answer."
+          },
+          "top1": "SDTM_v2.1.xlsx | Variables | row 201"
+        },
+        {
+          "id": "en-gen-09",
+          "lang": "en",
+          "topic": "general-model",
+          "answerable": true,
+          "question": "What is the variable --STAT used for in SDTM?",
+          "retrieval": {
+            "reciprocal_rank": 0.3333333333333333,
+            "first_relevant_rank": 3,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.5,
+              "10": 0.5
+            }
+          },
+          "latency_ms": 45455.3839,
+          "answer": "Based on the provided documentation, the variable `--STAT` (Completion Status) is a **Record Qualifier** of type **Char** whose purpose varies by observation class:\n\n- **Events class**: Used to indicate when a question about the occurrence of a prespecified event was not answered. Should be null or have a value of \"NOT DONE\". Not used in the AE domain. [1]\n- **Findings class**: Used to indicate that a question was not asked or a test was not done, or a test was attempted but did not generate a result. Should be null or have a value of \"NOT DONE\". [2]\n- **Interventions class**: Used to indicate when a question about the occurrence of a prespecified intervention was not answered. Should be null or have a value of \"NOT DONE\". [3]\n\nIn all three classes, the variable label is \"Completion Status\" and the permitted values are null or \"NOT DONE\".",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All claims in the answer are directly supported by the excerpts: --STAT is Completion Status, Char, Record Qualifier, with class-specific notes for Events, Findings, and Interventions, and the null/'NOT DONE' permitted values. Citations [1], [2], [3] correctly map to the Events, Findings, and Interventions excerpts respectively. The answer agrees with the reference answer (Completion Status, Char, Record Qualifier) and adds supported detail."
+          },
+          "top1": "SDTM_v2.1.xlsx | Variables | row 128"
+        },
+        {
+          "id": "en-gen-11",
+          "lang": "en",
+          "topic": "general-model",
+          "answerable": true,
+          "question": "What is the variable --DY used for in SDTM?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 21150.507999999998,
+          "answer": "Based on the provided documentation:\n\n**--DY** is a timing variable in the General Observations class, with the label \"Study Day of Visit/Collection/Exam\" (Type: Num, Role: Timing, C-Code: C170993) [1].\n\nIts definition is: \"The number of days from the sponsor-defined reference start date to the date of collection (--DTC), used in study data tabulation\" [1]. The sponsor-defined reference start date is **RFSTDTC** in Demographics [1].\n\nA related variable, **DMDY** (Study Day of Collection, DM domain), is defined as \"The actual study day of demographic data collection derived relative to the sponsor-defined reference start date,\" also referencing RFSTDTC [2].\n\nThe remaining excerpts (INVID, STUDYID, COUNTRY, SITEID) do not pertain to --DY [3][4][5][6].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts. Excerpt 1 supports the label, type, role, C-code, definition, and RFSTDTC note for --DY. Excerpt 2 supports the DMDY description. The answer correctly identifies the remaining excerpts as unrelated. Citation markers [1] and [2] accurately point to the supporting excerpts, and the answer fully agrees with the reference answer."
+          },
+          "top1": "SDTM_v2.1.xlsx | Variables | row 33"
+        },
+        {
+          "id": "en-pdf-01",
+          "lang": "en",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "What is the Biospecimen Findings (BS) domain used for?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 7,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 0.7
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 43526.9015,
+          "answer": "The BS domain is used to store findings related to specimen handling and specimen characteristics such as type, amount, or size, and it is not restricted to PGx-related specimens [1].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer accurately reflects Assumption 1 from Excerpt 1, stating that the BS domain stores findings related to specimen handling and specimen characteristics such as type, amount, or size, and is not restricted to PGx-related specimens. The citation [1] correctly points to the excerpt containing this information. No unsupported claims are made."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 196 | 6.3.5.2 Biospecimen Findings (BS)"
+        },
+        {
+          "id": "en-pdf-03",
+          "lang": "en",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "What is the Genomics Findings (GF) domain used for?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 10,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 42578.1746,
+          "answer": "The Genomics Findings (GF) domain is a findings domain that contains data related to the structure, function, evolution, mapping, and editing of subject and non-host organism genomic material of interest [1][6]. It includes, but is not limited to, assessments and results for genetic variation and transcription, and summary measures derived from these assessments [1][6]. The GF domain is used for findings from characteristics assessed from nucleic acids and may include subsequent inferences and/or predictions about related proteins/amino acids; however, direct assessments of proteins (e.g., assessments of amino acids) are out of scope for this domain [1][6].\n\nAdditional points on its scope:\n- For genetic testing on non-host organisms (e.g., bacteria, viruses, parasites), tests that give genetic results on non-host organisms identified in subject samples should be represented in GF, with NHOID populated to identify the non-host organism as the focus of the record [1][4].\n- If the purpose of the test is to detect or determine the identity of a viable, non-host organism or infectious agent in a subject sample, data should be represented in the Microbiology Specimen (MB) domain [4].\n- Tests used to determine resistance/susceptibility of a non-host organism to a drug on a genetic basis should be represented in the Microbiology Susceptibility (MS) domain [4].\n- If a test provides both genetic data and susceptibility/resistance data, genetic data should be represented in GF and the susceptibility/resistance data in the MS domain [4].\n\nStructure: gf.xpt, one record per finding per observation per biospecimen per subject (Tabulation) [6].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts. The definition of GF (structure, function, evolution, mapping, editing of subject and non-host organism genomic material; genetic variation and transcription; summary measures; nucleic acid findings with inferences about proteins; proteins out of scope) appears in Excerpts 1 and 6. The non-host organism rules (NHOID population, MB domain for detection/identity, MS domain for resistance/susceptibility, split representation) appear in Excerpts 1 and 4. The structure statement (gf.xpt, one record per finding per observation per biospecimen per subject, Tabulation) appears in Excerpt 6. Citation markers [1], [4], and [6] correctly correspond to the excerpts containing those claims. No reference answer was provided, but the answer is accurate and fully grounded in the documentation."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 220 | 6.3.5.4 Genomics Findings (GF)"
+        },
+        {
+          "id": "en-pdf-05",
+          "lang": "en",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "Which section of the SDTMIG specifies the Laboratory Test Results (LB) domain?",
+          "retrieval": {
+            "reciprocal_rank": 0.3333333333333333,
+            "first_relevant_rank": 3,
+            "hits_total": 4,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.4,
+              "10": 0.4
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.5,
+              "10": 0.5
+            }
+          },
+          "latency_ms": 45138.6449,
+          "answer": "The Laboratory Test Results (LB) domain is specified in **Section 6.3.5.6** of the SDTMIG v3.4, titled \"Laboratory Test Results (LB)\" [3][5][6].\n\nThis section falls under the hierarchy: Section 6 (Domain Models Based on the General Observation Classes) > 6.3 (Models for Findings Domains) > 6.3.5 (Specimen-based Findings Domains) > 6.3.5.6 (Laboratory Test Results (LB)) [3].\n\nThe LB domain is described as a findings domain containing laboratory test data such as hematology, clinical chemistry, and urinalysis, excluding microbiology or pharmacokinetic data, which are stored in separate domains [3]. Its structure is one record per lab test per time point per visit per subject [3][4].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer correctly identifies Section 6.3.5.6 as the section specifying the LB domain, which is directly supported by excerpts 3, 5, and 6 (all headed '6.3.5.6 Laboratory Test Results (LB)'). The hierarchy (6 > 6.3 > 6.3.5 > 6.3.5.6) is supported by the section headers in excerpts 3/5/6 and excerpt 1. The description of LB as a findings domain containing hematology, clinical chemistry, and urinalysis data, excluding microbiology and pharmacokinetics, is directly quoted from excerpt 3. The structure 'one record per lab test per time point per visit per subject' is supported by excerpts 3 and 4. All cited excerpts ([3], [4], [5], [6]) support the claims they are attached to. No reference answer was provided, but the answer is factually correct per the documentation."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 194 | 6.3.5.1 Generic Specimen-based Lab Findings Domain Specifica"
+        },
+        {
+          "id": "en-pdf-07",
+          "lang": "en",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "What is the Microbiology Susceptibility (MS) domain used for?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 8,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.6,
+              "10": 0.8
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 41406.7377,
+          "answer": "The Microbiology Susceptibility (MS) domain is used for representing data from drug-susceptibility testing on the organisms identified in the Microbiology Specimen (MB) domain [2][3]. The MB domain covers detection, identification, quantification, and other characterizations of microorganisms in subject samples, **except** for drug susceptibility testing, which is handled by MS [3]. All non-host infectious organisms—including bacteria, viruses, fungi, and parasites—are appropriate for the microbiology domains [3].\n\nAdditional details from the MS specification:\n- `MSAGENT` holds the name of the agent for which resistance is tested, based on genetic markers or direct phenotypic drug sensitivity testing (e.g., \"Penicillin\") [5].\n- `MSCONC`/`MSCONCU` hold the numeric concentration of the agent and its units (e.g., \"mg/L\") [5].\n- `MSTESTCD`/`MSTEST` examples include \"MIC\" (Minimum Inhibitory Concentration) and \"MICROSUS\" (Microbial Susceptibility) [5].\n- In SDTMIG v3.2, `MSRESCAT` was used to categorize a numeric susceptibility result in `MSORRES` as \"SUSCEPTIBLE\", \"INTERMEDIATE\", or \"RESISTANT\"; however, because some susceptibility tests report only a categorical result and not a numeric result, `MSRESCAT` should no longer be used for this purpose, and its core designation changed from Expected to Permissible [1].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts. The core purpose (MS represents drug-susceptibility testing on organisms identified in MB) is stated in Excerpts 2 and 3, and the answer cites [2][3] appropriately. The MB domain description and the list of non-host organisms are supported by Excerpt 3, cited as [3]. The MSAGENT, MSCONC/MSCONCU, and MSTESTCD/MSTEST details are supported by Excerpt 5, cited as [5]. The MSRESCAT explanation is supported by Excerpt 1, cited as [1]. Citation markers align with the supporting excerpts. No reference answer was provided, but the answer is accurate per the documentation, so correctness is scored as 1."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 252 | 6.3.5.7.2 Microbiology Susceptibility (MS)"
+        },
+        {
+          "id": "en-pdf-09",
+          "lang": "en",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "Which domain holds pharmacokinetic concentrations?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 8,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.8,
+              "10": 0.8
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 48842.7207,
+          "answer": "The **PC** (Pharmacokinetics Concentrations) domain holds pharmacokinetic concentrations.\n\nPer the documentation, PC is \"A findings domain that contains concentrations of drugs or metabolites in fluids or tissues as a function of time\" [1]. Its structure is \"One record per sample characteristic or time-point concentration per reference time point or per analyte per subject\" [1].\n\nNote that the related **PP** (Pharmacokinetics Parameters) domain contains derived PK parameters, not concentrations: it is \"A findings domain that contains pharmacokinetic parameters derived from pharmacokinetic concentration-time (PC) data\" [2].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer correctly identifies the PC domain as holding pharmacokinetic concentrations. The quoted definition ('A findings domain that contains concentrations of drugs or metabolites in fluids or tissues as a function of time') is directly supported by Excerpt 1, and the structure statement is also supported. The PP domain description is supported by Excerpt 2. Citations [1] and [2] accurately point to the supporting excerpts. No reference answer was provided, but the answer is factually correct per the documentation."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 267 | 6.3.5.9.1 Pharmacokinetics Concentrations (PC)"
+        },
+        {
+          "id": "en-pdf-11",
+          "lang": "en",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "What does the Vital Signs (VS) domain contain?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 6,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.8,
+              "10": 0.6
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 43587.734500000006,
+          "answer": "The Vital Signs (VS) domain is a **findings domain** that contains measurements \"including but not limited to blood pressure, temperature, respiration, body surface area, body mass index, height and weight\" [1].\n\nIts specification is defined as: `vs.xpt, Vital Signs - Findings. One record per vital sign measurement per time point per visit per subject, Tabulation` [1].\n\nExamples of tests shown in the domain include Systolic Blood Pressure (SYSBP), Diastolic Blood Pressure (DIABP), Pulse Rate (PULSE), Temperature (TEMP), Weight (WEIGHT), Height (HEIGHT), and Body Mass Index (BMI) [1][3][5][6].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer accurately reflects the documentation: the VS domain is described as a findings domain containing measurements including blood pressure, temperature, respiration, body surface area, body mass index, height, and weight (Excerpt 1). The specification statement matches Excerpt 1 verbatim. The listed test examples (SYSBP, DIABP, PULSE, TEMP, WEIGHT, HEIGHT, BMI) are supported by Excerpts 1, 3, 5, and 6. Citation markers correspond to the excerpts containing the cited content, and no unsupported claims are made."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 358 | 6.3.13 Vital Signs (VS)"
+        },
+        {
+          "id": "en-pdf-13",
+          "lang": "en",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "What is the Tumor/Lesion Identification (TU) domain used for?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 8,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.8,
+              "10": 0.8
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 44122.8107,
+          "answer": "The TU domain is a findings domain that represents data uniquely identifying tumors, lesions, or locations of interest under study ([1]). It identifies items such as tumors, cardiovascular culprit lesions, organs, bone marrow, and other sites of disease such as lymph nodes ([1]). These are commonly identified by an investigator and/or independent assessor and classified according to disease assessment criteria; for example, an oncology study using RECIST criteria would identify target, non-target, and new tumors ([1]).\n\nA record in the TU domain contains: a unique tumor ID value, anatomical location of the tumor, method used to identify the tumor, role of the individual identifying the tumor, and timing information ([1]).\n\nStructurally, TU is `tu.xpt`, Tumor/Lesion Identification - Findings, with one record per identified tumor per subject per assessor ([1]). The TU domain is related to the TR (Tumor/Lesion Results) domain, which represents quantitative measurements and/or qualitative assessments of the tumors, lesions, or locations of interest identified in TU ([4]). The TULNKID variable links an identification record in TU to assessment records in TR ([5]). Post-baseline records may be included in TU when a new tumor/lesion emerges, when a tumor/lesion splits into separate distinct tumors/lesions, or when a re-baseline of targets and non-targets is required (e.g., a cross-over study) ([5]).",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts. Excerpt 1 defines TU as a findings domain representing data that uniquely identifies tumors, lesions, or locations of interest, lists examples (tumors, cardiovascular culprit lesions, organs, bone marrow, lymph nodes), notes identification by investigator/assessor per disease criteria (RECIST target/non-target/new), and lists record contents (unique tumor ID, anatomical location, method, role, timing) plus the tu.xpt structure (one record per identified tumor per subject per assessor). Excerpt 4 describes TR as quantitative/qualitative assessments of items identified in TU. Excerpt 5 describes TULNKID linking TU to TR and the post-baseline inclusion scenarios (new tumor, split, re-baseline). Citation markers [1], [4], and [5] correctly correspond to these supporting excerpts. No reference answer was provided, but the answer is accurate and fully grounded in the documentation."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 344 | 6.3.12.1 Tumor/Lesion Identification (TU)"
+        },
+        {
+          "id": "en-pdf-15",
+          "lang": "en",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "What is the purpose of the Study Data Tabulation Model?",
+          "retrieval": {
+            "reciprocal_rank": 0.0,
+            "first_relevant_rank": null,
+            "hits_total": 0,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            }
+          },
+          "latency_ms": 40489.5331,
+          "answer": "Based on the provided documentation, the purpose of the Study Data Tabulation Model (SDTM) is described as follows:\n\n- The SDTM \"defines a standard structure for study data tabulations\" [3].\n- It \"describes the general conceptual model for representing clinical study data that is submitted to regulatory authorities\" [1].\n- The SDTM document is \"intended for companies and individuals involved in the collection, preparation, and analysis of study data that may be used for various purposes, including publication, warehousing, meta-analyses, and regulatory submission\" [3].\n- Guidance and specifications for the application of the model are provided separately in the implementation guides (IGs) [3].\n\nNote: The excerpts do not contain a dedicated \"Purpose\" statement for the SDTM itself beyond the descriptions above; the \"1.1 Purpose\" sections in the excerpts primarily address the purpose of the SDTMIG and the scope of the SDTM document.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts. Excerpt 3 (SDTM v2.1) states the SDTM 'defines a standard structure for study data tabulations' and is 'intended for companies and individuals involved in the collection, preparation, and analysis of study data that may be used for various purposes, including publication, warehousing, meta-analyses, and regulatory submission,' and that guidance/specifications are provided separately in IGs. Excerpt 1 (SDTMIG v3.4) states the SDTM 'describes the general conceptual model for representing clinical study data that is submitted to regulatory authorities.' The citation markers [3] and [1] correctly correspond to Excerpt 3 and Excerpt 1 respectively. The answer's note that no dedicated SDTM purpose statement exists beyond these descriptions is accurate. No reference answer was provided, but the answer is well-supported and correct."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 7 | 1.1 Purpose"
+        },
+        {
+          "id": "en-pdf-17",
+          "lang": "en",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "What is the SDTM table structure for a domain?",
+          "retrieval": {
+            "reciprocal_rank": 0.0,
+            "first_relevant_rank": null,
+            "hits_total": 0,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            }
+          },
+          "latency_ms": 44199.2986,
+          "answer": "The provided documentation excerpts do not contain a complete specification of the SDTM table structure for a domain. The following related information is available:\n\n**General observation class domains**\n- Identifier variables STUDYID, USUBJID, DOMAIN, and --SEQ are required in all domains based on the general observation classes; other Identifiers may be added as needed [5].\n- Any Timing variables are permissible for use in any submission dataset based on a general observation class, except where restricted by specific domain assumptions [5].\n- Any additional Qualifier variables from the same general observation class may be added to a domain model, except where restricted by specific domain assumptions [5].\n- The presence of 2 hyphens before a variable name (e.g., --TRT) indicates the required use of a prefix based on the 2-character domain code; such a variable may be referred to as a \"root\" variable [1].\n- Domain-specific variables are for use in a limited number of designated domains and include the specific domain prefix [1].\n\n**Domain specification tables**\n- A domain specification table includes rows for all required and expected variables for a domain and for a set of permissible variables; the permissible variables do not include all variables allowed for the domain [2].\n- The columns of the table are: Variable Name, Variable Label, Type (Num or Char), and Controlled Terms/Codelist/Format [2].\n- For variables with a \"--\" placeholder in the SDTM, the \"--\" is replaced by the 2-character domain code [2].\n\n**Comments (CO) domain example**\n- The structure for the Comments domain in the SDTM is \"One record per comment\"; because USUBJID is required in human clinical trials, the SDTMIG structure is \"One record per comment per subject\" [6].\n\nThe excerpts do not provide a single consolidated description of the SDTM table structure (e.g., the full set of variable roles or the general row/column layout) for a domain.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the cited excerpts: required identifiers and permissible timing/qualifier variables [5], the '--' prefix/root variable convention and domain-specific variables [1], domain specification table contents and columns [2], and the CO domain structure [6]. Citation markers accurately correspond to the supporting excerpts. The answer correctly notes that the excerpts do not provide a single consolidated description of the SDTM table structure for a domain, which is accurate given the supplied documentation."
+          },
+          "top1": "SDTM v2.1_FINAL_0.pdf | page 9 | 3.1 The General Observation Classes"
+        },
+        {
+          "id": "en-pdf-19",
+          "lang": "en",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "What are the significant changes in SDTM v2.1 compared with prior versions?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 43733.318,
+          "answer": "Based on the provided documentation excerpts, the significant changes in SDTM v2.1 compared with prior versions are as follows:\n\n**Backward compatibility and deprecation**\n- SDTM is designed for backward compatibility; datasets prepared with prior versions should be compatible with v2.1. Later versions may add new variables or correct textual errors but do not eliminate variables or structures from prior versions, except in isolated instances where older variables may be deprecated in favor of newer, more functional variables. SDTM v2.1 does not include any proposed deprecated variables. [1]\n\n**New section**\n- Section 6.8, Related References Dataset, was added. [1][5]\n\n**New variables**\n- New variables were added to the following sections [5]:\n  - Section 3.1.3 The Findings Observation Class: `--CELLEV`, Number of Cells Evaluated\n  - Section 3.1.4, Identifiers for All Classes: `SPTOBID` (Applicant-defined Tobacco Product Identifier), `IGDCMPID` (Ingredient or Component Identifier), `STOCONID` (Applicant-defined Storage Conditions ID)\n- A new variable `LVLDESC` (Reference ID Level Description, Char, Variable Qualifier, LEVEL) was added, described as \"A description of the generation number of the information source in relation to the first generation of the source of information,\" with examples \"ASSAY\", \"TRIAL SET\", \"EXPERIMENTAL UNIT\", \"OBSERVATIONAL UNIT\". [5]\n\n**Modifications to existing variables**\n- Many variable labels, notes, definitions, or examples were modified. In most cases, these modifications were to use the phrase \"treatment or product\" for the case when product use is not considered a treatment; in some cases a definition was added where there was none before. [5]\n- Variables with modifications (by section) include [4][5]:\n  - Section 3.1.1, The Interventions Observation Class: `--TRT`, `--RSDISC`, `--DOSFRM`, `--DOSFRQ`, `--DOSTOT`, `--DOSRGM`\n  - Section 3.1.2, The Events Observation Class: `--ACN`, `--ACNOTH`, `--REL`, `--RLDEV`\n  - Section 3.1.3, The Findings Observation Class: `--SPEC`\n  - Section 3.2.1, Demographics: `ACTARMUD`, `RFENDTC`, `RFSTDTC`, `RFXENDTC`, `RFXSTDTC`\n  - Section 5.1.2, Trial Sets: `SETCD`\n\n**Textual changes**\n- Textual changes were made to the \"Advice for this Model\" section, including changing \"human\" to \"human and nonclinical\" and updating the description of IGs to cover \"human, nonclinical\" domains. [3]\n\n**Additional context**\n- SDTM v2.1 includes additional variables related to the Tobacco Implementation Guide (TIG) v1.0, released concurrently. [2][6]\n- A number of changes proposed during development of SDTM v2.0 remain proposed for the next version; see Section 8, Proposed Future Changes to the SDTM. [1]\n\nNote: The excerpts reference Section 7, \"Changes from SDTM v2.0 to SDTM v2.1,\" as containing the complete list of new variables, changes to variable labels, definitions and notes, and other textual changes, but the full contents of that section are not included in the provided excerpts.",
+          "judge": {
+            "faithfulness": 0.95,
+            "citation_accuracy": 0.9,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer accurately reflects the documentation excerpts. Backward compatibility, no deprecated variables, new Section 6.8, new variables (--CELLEV, SPTOBID, IGDCMPID, STOCONID, LVLDESC), modifications to existing variables, textual changes, and TIG v1.0 context are all directly supported. Citations are mostly accurate; [1] supports backward compatibility and Section 6.8, [5] supports new variables and modifications, [4] supports modified variable list, [3] supports textual changes, [2][6] support TIG context. Minor issue: the answer attributes the modified variable list to [4][5], which is supported, but some specific variables like RFENDTC/RFSTDTC appear in excerpts 3/4 rather than clearly in 5; still acceptable. No reference answer provided, so correctness is judged as agreement with documentation, which is high."
+          },
+          "top1": "SDTM v2.1_FINAL_0.pdf | page 5 | 1.4 Significant Changes from Prior Versions"
+        },
+        {
+          "id": "en-unans-01",
+          "lang": "en",
+          "topic": "out-of-scope",
+          "answerable": false,
+          "question": "What is the reference interval for serum alanine aminotransferase in healthy adults?",
+          "retrieval": {
+            "reciprocal_rank": 0.0,
+            "first_relevant_rank": null,
+            "hits_total": 0,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            }
+          },
+          "latency_ms": 44795.592599999996,
+          "answer": "The provided documentation excerpts do not contain information on the reference interval for serum alanine aminotransferase in healthy adults. No excerpt addresses this analyte or its normal range.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": true,
+            "rationale": "The system correctly states that the excerpts do not contain information on the reference interval for serum alanine aminotransferase in healthy adults. This is accurate: none of the excerpts address ALT or its normal range. No citations were used, so citation accuracy is not applicable but not violated. The refusal is appropriate since the question is not answerable from the documentation."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 247 | 19 PT24H"
+        },
+        {
+          "id": "en-unans-03",
+          "lang": "en",
+          "topic": "out-of-scope",
+          "answerable": false,
+          "question": "What are the ISO 15189 requirements for internal quality control in a clinical laboratory?",
+          "retrieval": {
+            "reciprocal_rank": 0.0,
+            "first_relevant_rank": null,
+            "hits_total": 0,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            }
+          },
+          "latency_ms": 42191.1668,
+          "answer": "The provided documentation does not contain information about ISO 15189 requirements for internal quality control in a clinical laboratory. The excerpts are from the CDISC SDTM Implementation Guide (SDTMIG v3.4) and cover topics such as SDTM variables, domains (DM, MB, CE, TS), controlled terminology, and references to ISO standards (e.g., ISO 8601 for dates, ISO 3166 for countries), but none address ISO 15189 or clinical laboratory internal quality control requirements.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": true,
+            "rationale": "The system answer correctly states that the provided documentation does not contain information about ISO 15189 requirements for internal quality control in a clinical laboratory. All factual claims about the excerpts (that they are from SDTMIG v3.4 and cover SDTM variables, domains, controlled terminology, and ISO 8601/ISO 3166 references) are supported by the excerpts. No excerpt markers were cited, so citation accuracy is not applicable but no misattribution occurred. Since the question is not answerable from the documentation, the system's clear refusal is correct."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 1783"
+        },
+        {
+          "id": "en-unans-05",
+          "lang": "en",
+          "topic": "out-of-scope",
+          "answerable": false,
+          "question": "What is the recommended treatment protocol for severe hyperkalaemia?",
+          "retrieval": {
+            "reciprocal_rank": 0.0,
+            "first_relevant_rank": null,
+            "hits_total": 0,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            }
+          },
+          "latency_ms": 40533.3063,
+          "answer": "The provided documentation excerpts do not contain information on the treatment protocol for severe hyperkalaemia. The excerpts consist of SDTMIG v3.4 example datasets (EX, EC, LB, SR, CP domains) illustrating data tabulation structures, not clinical treatment guidance. No statement regarding hyperkalaemia management was found in the provided documentation.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": true,
+            "rationale": "The system correctly states that the provided SDTMIG excerpts contain no information on hyperkalaemia treatment protocols. All claims (that the excerpts are SDTM example datasets for EX, EC, LB, SR, CP domains and contain no clinical treatment guidance) are directly supported by the excerpts. No citations were misused. Since the question is not answerable from the documentation, the refusal is correct."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 118 | 2 TREATMENT 2009-02-"
+        },
+        {
+          "id": "ru-lb-02",
+          "lang": "ru",
+          "topic": "LB",
+          "answerable": true,
+          "question": "Что содержит переменная LBTEST в домене LB?",
+          "retrieval": {
+            "reciprocal_rank": 0.3333333333333333,
+            "first_relevant_rank": 3,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.5,
+              "10": 0.5
+            }
+          },
+          "latency_ms": 41922.9431,
+          "answer": "Согласно предоставленным выдержкам, переменная **LBTEST** в домене LB содержит следующее:\n\n- **Метка переменной:** Lab Test or Examination Name [3][4].\n- **Роль:** Synonym Qualifier [3][4].\n- **Тип:** Char [3][4].\n- **CDISC CT Codelist Code(s):** C67154 [3].\n- **Core:** Req [3][4].\n- **Содержимое (CDISC Notes):** Verbatim name of the test or examination used to obtain the measurement or finding. Note: Any test normally performed by a clinical laboratory is considered a lab test. The value in LBTEST cannot be longer than 40 characters. Examples: \"Alanine Aminotransferase\", \"Lactate Dehydrogenase\" [3][4].\n\nДополнительно, в Excerpt 2 указано, что для данных клеточного фенотипирования, ранее submitted в домене LB, LBTEST часто использовалась для заполнения информации о клеточных маркерах (например, \"CD4\" для обозначения helper T lymphocytes); в новом подходе для полной строки маркеров следует использовать переменную --MRKSTR, а --TEST зарезервирована для названия клеточной популяции [2].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims about LBTEST (label, role, type, codelist code, core, and CDISC Notes content) are directly supported by excerpts 3 and 4, and the citations [3][4] accurately point to those excerpts. The additional note about cell phenotyping is correctly attributed to excerpt [2]. The answer fully agrees with the reference answer."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 885"
+        },
+        {
+          "id": "ru-lb-04",
+          "lang": "ru",
+          "topic": "LB",
+          "answerable": true,
+          "question": "В каких единицах измеряется LBORRESU в домене LB?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 38651.0707,
+          "answer": "Согласно предоставленным выдержкам, **LBORRESU в домене LB содержит единицы измерения, в которых данные были собраны (original units)** — то есть единицы для LBORRES.\n\nКонкретные единицы определяются **CDISC Controlled Terminology (codelist C71620)**:\n\n- Excerpt 1: «Original units in which the data were collected. The unit for LBORRES. Example: \"g/L\".» — переменная LBORRESU, codelist C71620.\n- Excerpt 6: та же codelist C71620 используется для LBSTRESU (Standard Units).\n\nПримеры значений LBORRESU из Excerpt 2 (таблица lb.xpt): `mg/dL`, `10^6/L`, `mg/L`.\n\n**Важно:** предоставленные выдержки **не содержат полного перечня допустимых единиц** для LBORRESU. Для получения полного списка необходимо обратиться к codelist C71620 (CDISC CT), который в данных выдержках не раскрыт.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer correctly states that LBORRESU contains the original units in which data were collected, the unit for LBORRES, matching the reference answer. All claims are directly supported by Excerpt 1 (definition, codelist C71620, example 'g/L'), Excerpt 6 (same codelist for LBSTRESU), and Excerpt 2 (example values mg/dL, 10^6/L, mg/L). The caveat that the full codelist is not provided is accurate and does not contradict the reference. Citations are accurate and correctly attributed."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 893"
+        },
+        {
+          "id": "ru-lb-06",
+          "lang": "ru",
+          "topic": "LB",
+          "answerable": true,
+          "question": "Что описывает переменная LBSPEC в домене LB?",
+          "retrieval": {
+            "reciprocal_rank": 0.5,
+            "first_relevant_rank": 2,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.6309297535714575,
+              "10": 0.6309297535714575
+            }
+          },
+          "latency_ms": 44999.6389,
+          "answer": "Переменная **LBSPEC** в домене LB описывает **тип образца (Specimen Type)**, использованного для измерения.\n\nСогласно спецификации ([2]):\n- **Variable Name:** LBSPEC\n- **Variable Label:** Specimen Type\n- **Type:** Char\n- **Role:** Record Qualifier\n- **CDISC Notes:** «Defines the type of specimen used for a measurement. Examples: \"SERUM\", \"PLASMA\", \"URINE\".»\n- **CDISC CT Codelist Code(s):** C78734\n\nДополнительно, в контексте гармонизации с LOINC, LBSPEC указана среди аспектов теста, связанных с кодом LOINC (наряду с LBTEST, LBMETHOD и LBORRESU) ([1]). В примерах данных LBSPEC заполняется значениями, такими как «URINE» ([3]).",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the excerpts: Excerpt 2 provides the variable name, label (Specimen Type), type (Char), role (Record Qualifier), CDISC Notes with examples SERUM/PLASMA/URINE, and codelist C78734; Excerpt 1 supports the LOINC harmonization context; Excerpt 3 supports the 'URINE' example. Citation markers [1], [2], [3] correctly correspond to the excerpts supporting each claim. The answer fully agrees with the reference answer."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 241 | 6.3.5.6 Laboratory Test Results (LB)"
+        },
+        {
+          "id": "ru-lb-08",
+          "lang": "ru",
+          "topic": "LB",
+          "answerable": true,
+          "question": "Что записывает переменная LBDTC в домене LB?",
+          "retrieval": {
+            "reciprocal_rank": 0.0,
+            "first_relevant_rank": null,
+            "hits_total": 0,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            }
+          },
+          "latency_ms": 44906.6563,
+          "answer": "Переменная **LBDTC** в домене LB записывает **дату/время сбора образца (Date/Time of Specimen Collection)**, представленную в формате ISO 8601 (datetime или interval) [1].\n\nДополнительно, в примере из документации указано, что для производных записей спонсор может заполнять LBDTC первой из дат сбора образцов [3].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer correctly states that LBDTC records the Date/Time of Specimen Collection in ISO 8601 format, matching the reference answer and directly supported by Excerpt 1. The additional note about derived records populating LBDTC with the first specimen collection date is supported by Excerpt 3. Citations [1] and [3] accurately point to the supporting excerpts."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 241 | 6.3.5.6 Laboratory Test Results (LB)"
+        },
+        {
+          "id": "ru-lb-10",
+          "lang": "ru",
+          "topic": "LB",
+          "answerable": true,
+          "question": "Что идентифицирует переменная LBNAM в домене LB?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 41544.983199999995,
+          "answer": "Переменная **LBNAM** (Variable Label: **Vendor Name**) в домене LB идентифицирует **название или идентификатор лаборатории, выполнившей тест** (\"The name or identifier of the laboratory that performed the test\") [1][2].\n\n- Тип: Char; Role: Record Qualifier; Core: Perm [1][2].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer correctly states that LBNAM (Vendor Name) identifies the name or identifier of the laboratory that performed the test, matching the reference answer. It also correctly notes Type: Char, Role: Record Qualifier, Core: Perm, all supported by Excerpts 1 and 2. Citations [1] and [2] accurately point to the excerpts containing these facts."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 909"
+        },
+        {
+          "id": "ru-ds-02",
+          "lang": "ru",
+          "topic": "datasets",
+          "answerable": true,
+          "question": "Для чего используется набор данных CP?",
+          "retrieval": {
+            "reciprocal_rank": 0.0,
+            "first_relevant_rank": null,
+            "hits_total": 0,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            }
+          },
+          "latency_ms": 44559.5926,
+          "answer": "Based on the provided documentation excerpts, the CP dataset is used for **Cell Phenotype Findings**.\n\nKey points from the excerpts:\n\n- CP is a **Findings** domain, specifically a **Specimen-based Findings** domain, titled \"Cell Phenotype Findings (CP)\" [3].\n- It is used to record cell phenotype findings, including the use of several new qualifier variables [3].\n- The CP domain captures the operational definition of a test in terms of the markers/indicators used to perform that test. For example, `CPMRKSTR` (Marker String) identifies the full set of markers/indicators used by the laboratory to operationally define the complete test based on the combination of `CPTEST`, `CPSBMRKS`, and `CPCELSTA` [2]. This is necessary because laboratories often use different markers/indicators to identify a cell population, and the relationship between a named cell population and the set of markers used to identify it is many-to-one [1][2].\n- The domain includes variables such as `CPSBMRKS` (Sublineage Marker String), `CPCELSTA` (Cell State), `CPCSMRKS` (Cell State Marker String), `CPTSTCND` (Test Condition), `CPCNDAGT` (Test Condition Agent), `CPBDAGNT` (Binding Agent), `CPABCLID` (Antibody Clone Identifier), `CPMRKSTR` (Marker String), `CPGATE` (Gate), `CPGATDEF` (Gate Definition), `CPSPTSTD` (Sponsor Test Description), `CPTSTPNL` (Test Panel), `CPRESSCL` (Result Scale), `CPRESTYP` (Result Type), and `CPCOLSRT` (Collected Summary Result Type) [3].\n- `CPCSMRKS` identifies the marker(s) or indicator(s) used to define the cell state (i.e., the value in `CPCELSTA`). For example, when Ki67 expression is used to determine that a cell population is in a proliferating state, the value \"Ki67+\" in `CPCSMRKS` indicates that positive expression of Ki67 was used to define the population as proliferating [4].\n- `CPNAM` records the name or identifier of the laboratory that performed the test [5].\n- `CPCNDAGT` provides a textual description of the agent, if applicable, used to impose the condition identified in `CPTSTCND` (e.g., stimulating agents such as phorbol myristate acetate, concanavalin A, PHA-P, TNF-alpha, Ionomycin, candida antigen) [6].\n\nIn summary, the CP dataset is used to capture cell phenotype findings, including the markers, cell states, test conditions, and other qualifiers necessary to operationally define and interpret the test.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer correctly identifies CP as Cell Phenotype Findings, a Findings (specimen-based) domain, matching the reference answer. All factual claims (domain title, class, purpose, variables, marker string semantics, cell state markers, vendor name, test condition agent) are directly supported by the cited excerpts, and the citation markers align with the supporting excerpts. The reference answer's structural detail (one record per test per specimen per timepoint per visit per subject) is not contradicted, and the core purpose is accurately captured."
+          },
+          "top1": "SDTM_v2.1.xlsx | Variables | row 179"
+        },
+        {
+          "id": "ru-gen-01",
+          "lang": "ru",
+          "topic": "general-model",
+          "answerable": true,
+          "question": "Что идентифицирует переменная STUDYID в SDTM?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 41875.644199999995,
+          "answer": "Переменная STUDYID (Study Identifier, Char, Role: Identifier) содержит последовательность символов, используемую спонсором для уникальной идентификации исследования ([1], [2], [3]). В контексте домена Relationship (DR) она определена как идентификатор исследования для записи(ей) домена ([2]). В SDTMIG v3.4 для доменов Trial Design (TM, TE, TI) указано, что это уникальный идентификатор исследования, Core: Req ([4], [5], [6]).",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "The answer accurately states that STUDYID is a Char variable with Role Identifier, labeled Study Identifier, containing a sequence of characters used by the sponsor to uniquely identify the study, matching the reference answer and excerpts [1]-[3]. It correctly notes the DR domain definition as the study identifier of the domain record(s) ([2]) and the SDTMIG v3.4 Trial Design domains TM, TE, TI as unique identifier for a study with Core: Req ([4], [5], [6]). All claims are directly supported by the cited excerpts, and citations are accurate."
+          },
+          "top1": "SDTM_v2.1.xlsx | Variables | row 2"
+        },
+        {
+          "id": "ru-gen-03",
+          "lang": "ru",
+          "topic": "general-model",
+          "answerable": true,
+          "question": "Что содержит переменная --TESTCD в SDTM?",
+          "retrieval": {
+            "reciprocal_rank": 0.5,
+            "first_relevant_rank": 2,
+            "hits_total": 1,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.2,
+              "10": 0.1
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.6309297535714575,
+              "10": 0.6309297535714575
+            }
+          },
+          "latency_ms": 39593.9938,
+          "answer": "Переменная `--TESTCD` в SDTM содержит следующее ([2]):\n\n- **Variable Label**: Short Name of Measurement, Test, or Exam ([2])\n- **Type**: Char ([2])\n- **Role**: Topic ([2])\n- **Definition**: стандартизированная или полученная из словаря короткая последовательность символов, используемая для представления измерения, теста или обследования ([2])\n- **Notes**: используется как имя столбца при преобразовании набора данных из вертикального формата в горизонтальный; короткое значение может содержать до 8 символов ([2])\n- **Examples**: \"PLAT\", \"SYSBP\", \"RRMIN\", \"EYEEXAM\" ([2])\n\nДополнительные ограничения для домен-специфичных реализаций:\n- `RETESTCD` не может быть длиннее 8 символов, не может начинаться с цифры и не может содержать символы, кроме букв, цифр или подчёркиваний ([3]).\n- `TRTESTCD` не может содержать символы, кроме букв, цифр или подчёркиваний ([5]).\n- `TUTESTCD` не может быть длиннее 8 символов, не может начинаться с цифры и не может содержать символы, кроме букв, цифр или подчёркиваний ([6]).\n\nТакже `--TESTCD` уточняется переменными `--COLSRT` ([1]) и `--TSTDTL` ([4]).",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "Все фактические утверждения ответа напрямую подтверждаются приведёнными выдержками: определение, метка, тип, роль и примеры --TESTCD взяты из Excerpt 2; ограничения для RETESTCD, TRTESTCD, TUTESTCD — из Excerpt 3, 5, 6; уточняющие переменные --COLSRT и --TSTDTL — из Excerpt 1 и 4. Маркеры цитирования ([1]–[6]) корректно привязаны к соответствующим утверждениям. Ответ полностью согласуется с эталонным ответом."
+          },
+          "top1": "SDTM_v2.1.xlsx | Variables | row 200"
+        },
+        {
+          "id": "ru-gen-05",
+          "lang": "ru",
+          "topic": "general-model",
+          "answerable": true,
+          "question": "Для чего используется переменная --DY в SDTM?",
+          "retrieval": {
+            "reciprocal_rank": 0.0,
+            "first_relevant_rank": null,
+            "hits_total": 0,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            }
+          },
+          "latency_ms": 41904.528999999995,
+          "answer": "The provided documentation excerpts do not contain information about the variable `--DY` (the general study day variable). The excerpts only describe specific DM domain variables (DMDY, DTHDTC, DMDTC, RPATHCD, RACE, COUNTRY) and do not include a definition or usage description for the generic `--DY` variable.\n\nThe closest related information is for **DMDY** (Study Day of Collection) in the DM domain, which is defined as \"The actual study day of demographic data collection derived relative to the sponsor-defined reference start date,\" where the sponsor-defined reference start date is RFSTDTC [1]. However, this is specific to the DM domain and does not describe the general `--DY` variable.\n\nTherefore, the information needed to answer the question about the general `--DY` variable was **not found in the provided documentation**.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 0.0,
+            "refusal_correct": false,
+            "rationale": "The system answer is faithful to the excerpts: it correctly states that the excerpts do not define the generic --DY variable and accurately quotes DMDY's definition, with citation [1] properly supporting the DMDY claim. However, the question is answerable from the documentation: the reference answer defines --DY as Study Day of Visit/Collection/Exam (Num, Timing role), the number of days from the sponsor-defined reference start date to --DTC. The excerpts include DMDY, a specific instance of --DY, which supports this general definition. The system incorrectly refused to answer, so correctness is 0 and refusal_correct is false."
+          },
+          "top1": "SDTM_v2.1.xlsx | Variables | row 311"
+        },
+        {
+          "id": "ru-pdf-02",
+          "lang": "ru",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "Что описывает общая спецификация доменов лабораторных исследований?",
+          "retrieval": {
+            "reciprocal_rank": 0.0,
+            "first_relevant_rank": null,
+            "hits_total": 0,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            }
+          },
+          "latency_ms": 42545.7028,
+          "answer": "The provided documentation excerpts do not contain information about the general specification of laboratory test domains. The excerpts cover the Disposition (DS), Procedure Agents (AG), Healthcare Encounters (HO), and Concomitant/Prior Medications (CM) domains, but none address the Laboratory Test (LB) domain or its general specification. Therefore, the information requested was not found in the provided documentation.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": true,
+            "rationale": "The system answer correctly states that the provided excerpts do not contain information about the general specification of laboratory test domains. The excerpts indeed cover DS, AG, HO, and CM domains, none of which address the LB domain. No factual claims are made beyond this accurate observation, and no citations are misused. Since the question is not answerable from the documentation, the refusal is appropriate."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 155 | 6.2.4 Disposition (DS)"
+        },
+        {
+          "id": "ru-pdf-04",
+          "lang": "ru",
+          "topic": "pdf-sections",
+          "answerable": true,
+          "question": "Что содержит домен жизненно важных показателей (VS)?",
+          "retrieval": {
+            "reciprocal_rank": 1.0,
+            "first_relevant_rank": 1,
+            "hits_total": 3,
+            "hit_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "recall_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            },
+            "precision_at_k": {
+              "1": 1.0,
+              "5": 0.6,
+              "10": 0.3
+            },
+            "ndcg_at_k": {
+              "1": 1.0,
+              "5": 1.0,
+              "10": 1.0
+            }
+          },
+          "latency_ms": 40783.754799999995,
+          "answer": "Домен жизненно важных показателей (VS) содержит следующие данные (согласно [1], [2], [3]):\n\n**Тематические переменные:**\n- **VSTESTCD** — краткое наименование измерения/теста/обследования (например, \"SYSBP\", \"DIABP\", \"BMI\"); не более 8 символов, не может начинаться с цифры, допускает только буквы, цифры и подчёркивания [1].\n- **VSTEST** — словесное название теста/обследования (например, \"Systolic Blood Pressure\", \"Diastolic Blood Pressure\", \"Body Mass Index\"); не более 40 символов [1].\n\n**Группирующие/классифицирующие переменные:**\n- **VSCAT** — категория для группировки связанных записей [1].\n- **VSSCAT** — подкатегория (дальнейшая категоризация) [1].\n- **VSPOS** — положение субъекта во время измерения (например, \"SUPINE\", \"STANDING\", \"SITTING\") [1].\n\n**Переменные результатов:**\n- **VSORRES** — результат измерения в исходных единицах, как получен/собран [1].\n- **VSORRESU** — исходные единицы измерения (например, \"in\", \"LB\", \"beats/min\") [1].\n- **VSSTRESC** — результат в стандартном формате/стандартных единицах, скопированный или производный от VSORRES [1].\n\n**Дополнительно (по допущениям):**\n- При использовании словаря LOINC может применяться переменная **VSLOINC** [3].\n- При наличии референсного диапазона могут быть добавлены **VSORNRLO**, **VSORNRHI**, **VSNRIND**; при наличии токсикологической градации — **VSTOX** и **VSTOXGR**; клиническая значимость — **VSCLSIG** [3].\n- Могут добавляться любые идентификаторы, переменные времени и общие квалификаторы класса Findings, но, как правило, не используются: --BODSYS, --XFN, --SPEC, --SPCCND, --FAST [2].\n\n**Переменные времени (примеры):**\n- **VSTPTREF** — название фиксированной точки отсчёта (например, \"PREVIOUS DOSE\", \"PREVIOUS MEAL\") [3].\n- **VSRFTDTC** — дата/время точки отсчёта [3].\n\nПримеры данных VS включают измерения систолического/диастолического давления, позицию субъекта, единицы измерения, флаг последнего наблюдения перед воздействием (VSLOBXFL), а также использование --STAT для указания \"NOT DONE\" с причиной [2].",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": null,
+            "rationale": "All factual claims in the answer are directly supported by the provided excerpts. VSTESTCD, VSTEST, VSCAT, VSSCAT, VSPOS, VSORRES, VSORRESU, VSSTRESC are described in Excerpt 1; VSLOINC, VSORNRLO, VSORNRHI, VSNRIND, VSTOX, VSTOXGR, VSCLSIG, VSTPTREF, VSRFTDTC and the unused qualifiers are in Excerpts 2 and 3. Citation markers [1], [2], [3] correctly point to the excerpts containing the respective claims. No reference answer was provided, but the answer is consistent with the documentation, so correctness is scored as 1."
+          },
+          "top1": "SDTMIG v3.4-FINAL_2022-07-21.pdf | page 358 | 6.3.13 Vital Signs (VS)"
+        },
+        {
+          "id": "ru-unans-01",
+          "lang": "ru",
+          "topic": "out-of-scope",
+          "answerable": false,
+          "question": "Каковы референсные интервалы АЛТ у здоровых взрослых?",
+          "retrieval": {
+            "reciprocal_rank": 0.0,
+            "first_relevant_rank": null,
+            "hits_total": 0,
+            "hit_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "recall_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "precision_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            },
+            "ndcg_at_k": {
+              "1": 0.0,
+              "5": 0.0,
+              "10": 0.0
+            }
+          },
+          "latency_ms": 40355.8738,
+          "answer": "The provided documentation excerpts do not contain information about reference intervals for ALT (alanine aminotransferase) in healthy adults. The excerpts cover SDTMIG variables related to procedures (PR), subject visits (SV), substance use (SU), and demographic/reference data, but none address laboratory reference ranges or normal values for ALT.\n\nThis information was not found in the provided documentation.",
+          "judge": {
+            "faithfulness": 1.0,
+            "citation_accuracy": 1.0,
+            "correctness": 1.0,
+            "refusal_correct": true,
+            "rationale": "The system correctly states that the documentation does not contain reference intervals for ALT in healthy adults. The excerpts indeed cover only SDTMIG variables (PR, SV, SU) and demographic/reference data, with no laboratory reference ranges. No factual claims are unsupported, no citations are misused, and the refusal is appropriate since the question is not answerable from the provided documentation."
+          },
+          "top1": "SDTMIG_v3.4.xlsx | Variables | row 236"
+        }
+      ]
+    }
+  ]
+}

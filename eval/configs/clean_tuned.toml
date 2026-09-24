@@ -1,0 +1,18 @@
+# Абляция C: очищенный текст + чанкинг, подобранный под окно энкодера.
+# bge-small-en-v1.5 читает не более 512 токенов (~2000 символов), поэтому
+# target_tokens=900 давал чанки, которые молча обрезались при эмбеддинге.
+store_path = "data/index_clean_tuned.sqlite"
+inputs = "dicts"
+models_dir = "models"
+
+[cleaning]
+enabled = true
+
+[embedding]
+intra_threads = 4
+
+[chunking]
+target_tokens = 400
+overlap_tokens = 80
+max_chunk_chars = 1800
+min_chunk_chars = 600

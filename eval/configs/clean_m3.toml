@@ -1,0 +1,21 @@
+# Абляция D: очищенный текст + многоязычная модель эмбеддингов bge-m3.
+# Отличается от clean.toml ТОЛЬКО моделью эмбеддингов — это изолирует эффект
+# модели в кросс-язычном сценарии (русскоязычные вопросы к англоязычному корпусу).
+store_path = "data/index_clean_m3.sqlite"
+inputs = "dicts"
+models_dir = "models"
+
+[cleaning]
+enabled = true
+
+[embedding]
+model = "bge-m3"          # 1024 измерения, 100+ языков, ~2.3 ГБ
+max_length = 512
+intra_threads = 8
+batch_size = 32           # крупная модель: батч меньше, чтобы не упираться в память
+
+[chunking]
+target_tokens = 900
+overlap_tokens = 150
+max_chunk_chars = 4000
+min_chunk_chars = 0

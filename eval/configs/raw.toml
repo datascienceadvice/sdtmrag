@@ -1,0 +1,17 @@
+# Абляция A: «сырой» текст из pdf-extract, исходные параметры чанкинга.
+# Служит базовой линией для оценки эффекта очистки текста.
+store_path = "data/index_raw.sqlite"
+inputs = "dicts"
+models_dir = "models"
+
+[cleaning]
+enabled = false
+
+[embedding]
+intra_threads = 4
+
+[chunking]
+target_tokens = 900
+overlap_tokens = 150
+max_chunk_chars = 4000
+min_chunk_chars = 0

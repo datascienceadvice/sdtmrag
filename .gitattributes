@@ -1,0 +1,10 @@
+# Нормализация окончаний строк: репозиторий собирается на Windows,
+# но читается и на Linux — в индексе храним LF.
+* text=auto eol=lf
+
+# Бинарные форматы
+*.sqlite binary
+*.onnx binary
+*.pdf binary
+*.xlsx binary
+*.png binary

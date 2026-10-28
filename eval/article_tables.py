@@ -158,6 +158,8 @@ def main() -> int:
             av = [val(A[i], name, k) for i in ids]
             bv = [val(B[i], name, k) for i in ids]
             d, lo, hi = paired_bootstrap(av, bv)
+            # подпись таблицы обещает «после минус до»: меняем знак и границы
+            d, lo, hi = -d, -hi, -lo
             if name in ("hit", "recall"):
                 p = mcnemar(av, bv)[2]
                 p_s = f"{p:.4f}" if p >= 0.0001 else "<0.0001"
@@ -166,11 +168,12 @@ def main() -> int:
             out.append(f"| {label} | {title} | {mean(av):.3f} | {mean(bv):.3f} | "
                        f"{d:+.3f} [{lo:+.3f}; {hi:+.3f}] | {p_s} |")
     out.append("")
-    out.append("Differences are After minus Before. P values from the exact McNemar test for "
-               "binary hit rates; dashes indicate continuous metrics, where the confidence "
-               "interval is the inferential statement. Holm adjustment over the four primary "
-               "comparisons gives adjusted P = 0.002 for fusion (Hit@5) and 0.078 for cleaning "
-               "(Hit@5).")
+    out.append("Differences are After minus Before; the confidence interval is the inferential "
+               "statement for continuous metrics, and the exact McNemar test is given for binary "
+               "hit rates. Holm adjustment over the four primary comparisons gives adjusted "
+               "P = 0.002 for fusion (Hit@5) and 0.078 for cleaning (Hit@5). The cross-encoder is "
+               "compared on the cleaned index here; its effect on the other two indexes is "
+               "reported in the text.")
     out.append("")
 
     Path("article/tables.md").write_text("\n".join(out), encoding="utf-8")

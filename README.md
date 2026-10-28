@@ -112,6 +112,10 @@ sdtmrag eval --gold eval/gold.en.jsonl \
     --store data/index_clean_tuned.sqlite=clean+tuned \
     --k 1,3,5,10 --out eval/reports
 
+# lexical baseline, hybrid fusion, or the default dense retriever
+sdtmrag eval --gold eval/gold.en.jsonl --store data/index_clean.sqlite=clean \
+    --retriever bm25 --no-rerank
+
 # add LLM-judge answer scoring (requires DEEPSEEK_API_KEY)
 sdtmrag eval --gold eval/gold.en.jsonl --store data/index_clean.sqlite=clean --judge
 ```
@@ -311,8 +315,19 @@ python eval/verify_gold.py         # locators in every index, verbatim reference
 python eval/check_gold.py          # does each passage answer its question?
 
 for r in dense bm25 hybrid; do
-  sdtmrag eval --gold eval/gold.en.jsonl --retriever $r --no-rerank     --store data/index_raw.sqlite=raw     --store data/index_clean.sqlite=clean     --store data/index_clean_tuned.sqlite=clean+tuned     --out eval/reports/${r}_norerank
+  sdtmrag eval --gold eval/gold.en.jsonl --retriever $r --no-rerank \
+    --store data/index_raw.sqlite=raw \
+    --store data/index_clean.sqlite=clean \
+    --store data/index_clean_tuned.sqlite=clean+tuned \
+    --out eval/reports/${r}_norerank
 done
+
+# answer quality and refusal on a stratified subsample
+sdtmrag eval --gold eval/gold.judge.jsonl --judge \
+    --store data/index_clean.sqlite=clean --out eval/reports/judge_rerank
+
+# the same model without any retrieved passage
+python eval/closedbook.py
 ```
 
 An index carries its own metadata (embedding model, vector dimension, chunking and

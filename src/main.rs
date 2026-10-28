@@ -88,6 +88,9 @@ enum Cmd {
         /// ограничиться первыми N вопросами
         #[arg(long)]
         limit: Option<usize>,
+        /// способ поиска: dense (плотные эмбеддинги), bm25 (лексический) или hybrid (RRF)
+        #[arg(long, default_value = "dense")]
+        retriever: String,
     },
     /// Статистика по индексу
     Stats {},
@@ -358,7 +361,7 @@ async fn main() -> Result<()> {
                 );
             }
         }
-        Cmd::Eval { gold, stores, ks, no_rerank, judge, context_k, out, limit } => {
+        Cmd::Eval { gold, stores, ks, no_rerank, judge, context_k, out, limit, retriever } => {
             let gold_paths: Vec<PathBuf> = gold.iter().map(PathBuf::from).collect();
             let items = sdtmrag::eval::load_gold(&gold_paths)?;
             if items.is_empty() {
@@ -386,12 +389,14 @@ async fn main() -> Result<()> {
                 None
             };
 
+            let retriever = sdtmrag::eval::Retriever::parse(&retriever)?;
             let opts = sdtmrag::eval::RunOptions {
                 ks: ks.clone(),
                 rerank: !no_rerank,
                 judge,
                 context_k,
                 limit,
+                retriever,
             };
 
             let mut configs = Vec::new();

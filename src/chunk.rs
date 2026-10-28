@@ -47,11 +47,28 @@ fn heading_gap_re() -> &'static Regex {
     RE.get_or_init(|| Regex::new(r"\s{2,}").expect("valid regex"))
 }
 
+/// Токен вида `CA123`, `IM001`, `PI0101` — идентификатор из таблицы примеров,
+/// а не слово заголовка.
+fn code_like_re() -> &'static Regex {
+    static RE: std::sync::OnceLock<Regex> = std::sync::OnceLock::new();
+    RE.get_or_init(|| Regex::new(r"^[A-Z]{2,}\d{2,}").expect("valid regex"))
+}
+
+fn is_code_token(word: &str) -> bool {
+    let w = word.trim_matches(|c: char| !c.is_alphanumeric());
+    code_like_re().is_match(w)
+}
+
 /// Является ли строка заголовком раздела.
 ///
 /// После очистки табличные строки размечены через `|`, а строки оглавления
 /// удалены, поэтому дополнительные проверки здесь — страховка для режима
 /// «без очистки»: раньше на них приходилось ~73% ложных заголовков.
+///
+/// Отдельно отсекаются строки таблиц примеров, начинающиеся с числа и
+/// содержащие коды (`6 CA123-`, `11 IM001-`): они проходили формальную
+/// проверку номера раздела и подменяли заголовок главы, из-за чего иерархический
+/// путь раздела становился мусорным и попадал в текст каждого чанка.
 fn is_section_heading(re: &Regex, line: &str) -> bool {
     if line.chars().count() >= 200 {
         return false;
@@ -74,6 +91,9 @@ fn is_section_heading(re: &Regex, line: &str) -> bool {
         Some(n) => &line[n.len()..],
         None => return false,
     };
+    if title.split_whitespace().any(is_code_token) {
+        return false;
+    }
     let words = title
         .split_whitespace()
         .filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 2)
@@ -314,6 +334,11 @@ mod tests {
         assert!(!is_section_heading(&re, "234 | CP | 0001"));
         // строка оглавления
         assert!(!is_section_heading(&re, "1.1 PURPOSE .............. 5"));
+        // строки таблиц примеров: проходили формальную проверку и подменяли
+        // заголовок главы, портя иерархический путь раздела
+        assert!(!is_section_heading(&re, "6 CA123- Laboratory Test Results"));
+        assert!(!is_section_heading(&re, "11 IM001- Procedure Agents"));
+        assert!(is_section_heading(&re, "6 Domain Models Based on the General Observation Classes"));
         // табличная строка без разметки (режим «без очистки»)
         assert!(!is_section_heading(&re, "1  Role  CDISC Notes  Core"));
     }

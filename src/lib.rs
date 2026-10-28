@@ -1,3 +1,4 @@
+pub mod bm25;
 pub mod chunk;
 pub mod clean;
 pub mod config;

@@ -1,0 +1,874 @@
+{
+  "mode": "sufficiency",
+  "items": 173,
+  "passed": 168,
+  "rate": 0.9710982658959537,
+  "seconds": 38.5,
+  "results": [
+    {
+      "id": "en-lookup-01",
+      "ok": true,
+      "why": "Passage identifies LBTESTCD as the lab test short name variable."
+    },
+    {
+      "id": "en-lookup-02",
+      "ok": true,
+      "why": "LBTEST holds verbatim full test name, e.g. Alanine Aminotransferase."
+    },
+    {
+      "id": "en-lookup-03",
+      "ok": true,
+      "why": "LBCAT is the grouping qualifier with those exact example categories."
+    },
+    {
+      "id": "en-lookup-04",
+      "ok": true,
+      "why": "Passage identifies LBSCAT as subcategory with those exact example values."
+    },
+    {
+      "id": "en-lookup-05",
+      "ok": true,
+      "why": "LBORRES is defined as result in original units, answering the question."
+    },
+    {
+      "id": "en-lookup-06",
+      "ok": true,
+      "why": "Passage identifies LBORRESU as Original Units with example g/L."
+    },
+    {
+      "id": "en-lookup-07",
+      "ok": true,
+      "why": "LBSTRESC notes explicitly state it holds result copied/derived from LBORRES in standard character format."
+    },
+    {
+      "id": "en-lookup-08",
+      "ok": true,
+      "why": "Passage identifies LBSTRESN as numeric result in standard units, copied from LBSTRESC."
+    },
+    {
+      "id": "en-lookup-09",
+      "ok": true,
+      "why": "LBSTRESU explicitly specifies standardized unit for LBSTRESC or LBSTRESN."
+    },
+    {
+      "id": "en-lookup-10",
+      "ok": true,
+      "why": "Identifies LBORNRLO as reference range lower limit in original units."
+    },
+    {
+      "id": "en-lookup-11",
+      "ok": true,
+      "why": "Passage identifies LBORNRHI as reference range upper limit in original units."
+    },
+    {
+      "id": "en-lookup-12",
+      "ok": true,
+      "why": "Passage identifies LBSTNRLO as lower reference limit in standard units."
+    },
+    {
+      "id": "en-lookup-13",
+      "ok": true,
+      "why": "Passage identifies LBSTNRHI as Reference Range Upper Limit-Std Units."
+    },
+    {
+      "id": "en-lookup-14",
+      "ok": true,
+      "why": "LBNRIND is Reference Range Indicator with NORMAL/HIGH/LOW examples."
+    },
+    {
+      "id": "en-lookup-15",
+      "ok": true,
+      "why": "LBSTAT indicates exam not done; null if result exists."
+    },
+    {
+      "id": "en-lookup-16",
+      "ok": true,
+      "why": "LBREASND explicitly records reason test not done, including specimen lost example."
+    },
+    {
+      "id": "en-lookup-17",
+      "ok": true,
+      "why": "LBSPEC is labeled Specimen Type with examples SERUM, PLASMA, URINE."
+    },
+    {
+      "id": "en-lookup-18",
+      "ok": true,
+      "why": "LBSPCCND Specimen Condition with HEMOLYZED example directly answers the question."
+    },
+    {
+      "id": "en-lookup-19",
+      "ok": true,
+      "why": "Identifies LBSPCUFL as the variable for specimen usability for the test."
+    },
+    {
+      "id": "en-lookup-20",
+      "ok": true,
+      "why": "LBMETHOD labeled Method of Test or Examination with EIA/electrophoresis examples answers it."
+    },
+    {
+      "id": "en-lookup-21",
+      "ok": true,
+      "why": "LBANMETH Analysis Method describes secondary processing like eGFR calculation."
+    },
+    {
+      "id": "en-lookup-22",
+      "ok": true,
+      "why": "Identifies LBFAST as Fasting Status variable with definition and examples."
+    },
+    {
+      "id": "en-lookup-23",
+      "ok": true,
+      "why": "Passage identifies LBDTC as date/time of specimen collection in ISO 8601 format."
+    },
+    {
+      "id": "en-lookup-24",
+      "ok": true,
+      "why": "Passage identifies LBDY as Study Day of Specimen Collection in LB."
+    },
+    {
+      "id": "en-lookup-25",
+      "ok": true,
+      "why": "Identifies LBTPT as Planned Time Point Name with timing description."
+    },
+    {
+      "id": "en-lookup-26",
+      "ok": true,
+      "why": "Passage identifies LBTPTNUM as Planned Time Point Number, timing variable for LB."
+    },
+    {
+      "id": "en-lookup-27",
+      "ok": true,
+      "why": "Passage defines LBELTM as planned elapsed time in ISO 8601 duration relative to reference."
+    },
+    {
+      "id": "en-lookup-28",
+      "ok": true,
+      "why": "LBTPTREF is named as the fixed reference point for LBELTM, LBTPTNUM, LBTPT."
+    },
+    {
+      "id": "en-lookup-29",
+      "ok": true,
+      "why": "Identifies LBRFTDTC as date/time of reference time point, LBTPTREF."
+    },
+    {
+      "id": "en-lookup-30",
+      "ok": true,
+      "why": "Passage identifies LBLOINC as the LOINC Code variable for lab tests."
+    },
+    {
+      "id": "en-lookup-31",
+      "ok": true,
+      "why": "Passage explicitly states LBNAM identifies the laboratory that performed the test."
+    },
+    {
+      "id": "en-lookup-32",
+      "ok": true,
+      "why": "LBTOXGR records toxicity grade using standard scale like NCI CTCAE."
+    },
+    {
+      "id": "en-lookup-33",
+      "ok": true,
+      "why": "LBCLSIG is defined as clinically significant based on judgment, answering the question."
+    },
+    {
+      "id": "en-lookup-34",
+      "ok": true,
+      "why": "LBDRVFL is the Derived Flag variable marking derived records."
+    },
+    {
+      "id": "en-lookup-35",
+      "ok": true,
+      "why": "Identifies LBBLFL as Baseline Flag variable in LB domain."
+    },
+    {
+      "id": "en-lookup-36",
+      "ok": true,
+      "why": "Passage identifies LBLOBXFL as last observation before exposure flag."
+    },
+    {
+      "id": "en-lookup-37",
+      "ok": true,
+      "why": "LBSPID is the sponsor-defined identifier variable in LB, matching the question."
+    },
+    {
+      "id": "en-lookup-38",
+      "ok": true,
+      "why": "LBREFID is labeled Specimen ID, an identifier for specimen, answering the question."
+    },
+    {
+      "id": "en-lookup-39",
+      "ok": true,
+      "why": "LBGRPID Group ID ties related records in LB domain."
+    },
+    {
+      "id": "en-lookup-40",
+      "ok": true,
+      "why": "Passage defines LBSEQ as sequence number ensuring uniqueness of subject records in LB domain."
+    },
+    {
+      "id": "en-lookup-41",
+      "ok": true,
+      "why": "LBENDTC is labeled End Date/Time of Specimen Collection, answering the question."
+    },
+    {
+      "id": "en-lookup-42",
+      "ok": true,
+      "why": "Passage identifies LBPDUR as the planned duration variable with ISO 8601 domain."
+    },
+    {
+      "id": "en-lookup-43",
+      "ok": true,
+      "why": "LBCOLSRT is the variable for collected summary result type."
+    },
+    {
+      "id": "en-lookup-44",
+      "ok": true,
+      "why": "Passage identifies LBLLOD as the LB variable for Lower Limit of Detection."
+    },
+    {
+      "id": "en-lookup-45",
+      "ok": true,
+      "why": "LBSTNRC is defined as reference range for character results with examples."
+    },
+    {
+      "id": "en-lookup-46",
+      "ok": true,
+      "why": "Defines STUDYID as unique study identifier, answering which variable."
+    },
+    {
+      "id": "en-lookup-47",
+      "ok": true,
+      "why": "Passage defines DOMAIN as 2-character abbreviation for a collection of observations."
+    },
+    {
+      "id": "en-lookup-48",
+      "ok": true,
+      "why": "Definition explicitly states USUBJID uniquely identifies subject across all studies/submissions."
+    },
+    {
+      "id": "en-lookup-49",
+      "ok": true,
+      "why": "Defines --TESTCD as standardized short code for test in Findings class."
+    },
+    {
+      "id": "en-lookup-50",
+      "ok": true,
+      "why": "Defines --CAT as grouping/classification of topic, a grouping qualifier."
+    },
+    {
+      "id": "en-lookup-51",
+      "ok": true,
+      "why": "Passage defines --ORNRLO as normal range lower limit in original units."
+    },
+    {
+      "id": "en-lookup-52",
+      "ok": true,
+      "why": "Passage identifies --STNRC as the variable for normal range of character results."
+    },
+    {
+      "id": "en-lookup-53",
+      "ok": true,
+      "why": "Defines --EVAL as the evaluator variable recording who performed the assessment."
+    },
+    {
+      "id": "en-lookup-54",
+      "ok": true,
+      "why": "Defines --TPTREF as timing variable naming reference point for relative time points."
+    },
+    {
+      "id": "en-lookup-55",
+      "ok": true,
+      "why": "Passage defines --ENTPT as End Reference Time Point, answering the question."
+    },
+    {
+      "id": "en-structure-01",
+      "ok": true,
+      "why": "Passage explicitly states LB structure matches the question exactly."
+    },
+    {
+      "id": "en-structure-02",
+      "ok": true,
+      "why": "Passage identifies MB dataset as Microbiology Specimen findings."
+    },
+    {
+      "id": "en-structure-03",
+      "ok": true,
+      "why": "Passage identifies MS dataset as Microbiology Susceptibility, directly answering the question."
+    },
+    {
+      "id": "en-structure-04",
+      "ok": true,
+      "why": "Passage states MI dataset label is Microscopic Findings, directly answering the question."
+    },
+    {
+      "id": "en-structure-05",
+      "ok": true,
+      "why": "Passage explicitly names BS dataset as Biospecimen Findings."
+    },
+    {
+      "id": "en-structure-06",
+      "ok": true,
+      "why": "Passage identifies CP dataset as Cell Phenotype Findings."
+    },
+    {
+      "id": "en-structure-07",
+      "ok": true,
+      "why": "Passage explicitly states GF dataset is Genomics Findings."
+    },
+    {
+      "id": "en-structure-08",
+      "ok": true,
+      "why": "Passage identifies IS dataset as Immunogenicity Specimen Assessments."
+    },
+    {
+      "id": "en-structure-09",
+      "ok": true,
+      "why": "Passage identifies PC dataset as Pharmacokinetics Concentrations, directly answering the question."
+    },
+    {
+      "id": "en-structure-10",
+      "ok": true,
+      "why": "Passage identifies PP dataset as Pharmacokinetics Parameters, directly answering the question."
+    },
+    {
+      "id": "en-structure-11",
+      "ok": true,
+      "why": "Passage identifies BE dataset as Biospecimen Events, answering where specimen collection is recorded."
+    },
+    {
+      "id": "en-structure-12",
+      "ok": true,
+      "why": "Passage identifies UR dataset as Urinary System Findings in Findings class."
+    },
+    {
+      "id": "en-structure-13",
+      "ok": true,
+      "why": "Passage identifies VS dataset as Vital Signs with measurement structure."
+    },
+    {
+      "id": "en-structure-14",
+      "ok": true,
+      "why": "Passage identifies EG dataset as ECG Test Results, answering the question."
+    },
+    {
+      "id": "en-structure-15",
+      "ok": true,
+      "why": "DM dataset structure is one record per subject with demographics."
+    },
+    {
+      "id": "en-structure-16",
+      "ok": true,
+      "why": "Passage states RELSPEC has one record per specimen identifier per subject."
+    },
+    {
+      "id": "en-structure-17",
+      "ok": true,
+      "why": "Passage names SUPPQUAL dataset holding supplemental qualifiers per related parent domain record."
+    },
+    {
+      "id": "en-structure-18",
+      "ok": true,
+      "why": "Identifies CO Comments dataset as special-purpose holding free-text comments."
+    },
+    {
+      "id": "en-structure-19",
+      "ok": true,
+      "why": "Passage identifies SE as Subject Elements, one record per actual Element per subject."
+    },
+    {
+      "id": "en-structure-20",
+      "ok": true,
+      "why": "Passage identifies SV (Subject Visits) dataset for actual or planned visits per subject."
+    },
+    {
+      "id": "en-concept-01",
+      "ok": true,
+      "why": "Passage names SDTM v2.0 and describes it as general conceptual model."
+    },
+    {
+      "id": "en-concept-02",
+      "ok": true,
+      "why": "States rows include required, expected, and permissible variables."
+    },
+    {
+      "id": "en-concept-03",
+      "ok": true,
+      "why": "Passage illustrates variable roles (Topic, Identifier, Timing, Qualifier) describing observation components."
+    },
+    {
+      "id": "en-concept-04",
+      "ok": true,
+      "why": "Passage states 2-character code identifies domain and is stored in DOMAIN variable."
+    },
+    {
+      "id": "en-concept-05",
+      "ok": true,
+      "why": "Passage states study includes special-purpose datasets beyond the 3 general observation classes."
+    },
+    {
+      "id": "en-concept-06",
+      "ok": true,
+      "why": "Describes process for creating custom domain when no published domain fits."
+    },
+    {
+      "id": "en-concept-07",
+      "ok": true,
+      "why": "Passage directly states key variables are examples and dataset order is not normative."
+    },
+    {
+      "id": "en-concept-08",
+      "ok": true,
+      "why": "Defines surrogate key and contrasts with natural key via business-need immunity."
+    },
+    {
+      "id": "en-concept-09",
+      "ok": true,
+      "why": "Lists explicit requirements indicating conformance with SDTMIG domain models."
+    },
+    {
+      "id": "en-concept-10",
+      "ok": true,
+      "why": "Defines expected variables: may have some nulls, not all null; null column required if absent."
+    },
+    {
+      "id": "en-concept-11",
+      "ok": true,
+      "why": "Passage directly states sponsors may split a domain into physically separate datasets."
+    },
+    {
+      "id": "en-concept-12",
+      "ok": true,
+      "why": "Directly states missing values for individual data items are represented by nulls."
+    },
+    {
+      "id": "en-concept-13",
+      "ok": true,
+      "why": "Identifies --CAT/--SCAT grouping variables and states sponsors assign their values."
+    },
+    {
+      "id": "en-concept-14",
+      "ok": true,
+      "why": "Directly defines variable length as byte length of ASCII strings."
+    },
+    {
+      "id": "en-concept-15",
+      "ok": true,
+      "why": "Passage directly lists how controlled terminology is represented in domain specifications."
+    },
+    {
+      "id": "en-concept-16",
+      "ok": true,
+      "why": "Passage explicitly states ISO 8601 is used for calendar dates and times of day."
+    },
+    {
+      "id": "en-concept-17",
+      "ok": true,
+      "why": "Explains precision inferred from components, right truncation, hyphens per ISO 8601."
+    },
+    {
+      "id": "en-concept-18",
+      "ok": true,
+      "why": "Defines study day 1 as RFSTDTC, increments after, decrements before, no day 0."
+    },
+    {
+      "id": "en-concept-19",
+      "ok": true,
+      "why": "Directly answers that not all time points require all variables for uniqueness."
+    },
+    {
+      "id": "en-concept-20",
+      "ok": true,
+      "why": "States --ORRES always populated except when --STAT='NOT DONE' or for derived records."
+    },
+    {
+      "id": "en-concept-21",
+      "ok": false,
+      "why": "Only mentions an example exists; does not describe the approach itself."
+    },
+    {
+      "id": "en-concept-22",
+      "ok": true,
+      "why": "Passage explains 40-char limit due to SAS V5 transport format constraints."
+    },
+    {
+      "id": "en-concept-23",
+      "ok": true,
+      "why": "Explains NORMAL/ABNORMAL results are separate from clinical significance, with ECG example."
+    },
+    {
+      "id": "en-concept-24",
+      "ok": false,
+      "why": "Passage only introduces a table; does not state where comparison occurs."
+    },
+    {
+      "id": "en-concept-25",
+      "ok": false,
+      "why": "Passage gives examples but does not name the identifier used for record-specific comments."
+    },
+    {
+      "id": "en-concept-26",
+      "ok": true,
+      "why": "Passage describes demographics as special-purpose domain with essential standard subject-describing variables."
+    },
+    {
+      "id": "en-concept-27",
+      "ok": true,
+      "why": "Passage states SV dataset summarizes a subject's visits during study participation."
+    },
+    {
+      "id": "en-concept-28",
+      "ok": true,
+      "why": "Passage lists actions recorded in biospecimen events domain, answering the question."
+    },
+    {
+      "id": "en-concept-29",
+      "ok": true,
+      "why": "Passage names IS, LB, MB as specimen-based laboratory domains grouped together."
+    },
+    {
+      "id": "en-concept-30",
+      "ok": true,
+      "why": "Passage states domains copied from provisional SDTMIG-PGx."
+    },
+    {
+      "id": "en-concept-31",
+      "ok": true,
+      "why": "Passage directly defines cell phenotype findings domain contents."
+    },
+    {
+      "id": "en-concept-32",
+      "ok": true,
+      "why": "Passage directly defines GF domain contents: genomic structure, function, variation, transcription."
+    },
+    {
+      "id": "en-concept-33",
+      "ok": true,
+      "why": "Passage directly lists what the binding agent may be, answering the question."
+    },
+    {
+      "id": "en-concept-34",
+      "ok": true,
+      "why": "States included tests (hematology, chemistry, urinalysis) and excluded data (microbiology, pharmacokinetics)."
+    },
+    {
+      "id": "en-concept-35",
+      "ok": true,
+      "why": "Passage states MB records detection, identification, quantification, characterization of microorganisms in samples."
+    },
+    {
+      "id": "en-concept-36",
+      "ok": true,
+      "why": "Passage lists variables not allowed in MB domain, including NHOID and others."
+    },
+    {
+      "id": "en-concept-37",
+      "ok": true,
+      "why": "States MI records each microscopic finding observed, answering what the domain records."
+    },
+    {
+      "id": "en-concept-38",
+      "ok": true,
+      "why": "Directly defines PC domain contents: drug/metabolite concentrations in fluids/tissues over time."
+    },
+    {
+      "id": "en-concept-39",
+      "ok": true,
+      "why": "Directly defines PK parameters domain as findings domain with parameters derived from PC data."
+    },
+    {
+      "id": "en-concept-40",
+      "ok": false,
+      "why": "Passage shows RELREC structure but not how parameter-concentration relationships are documented."
+    },
+    {
+      "id": "en-concept-41",
+      "ok": true,
+      "why": "Passage directly states readers should refer to these documents before preparing a submission."
+    },
+    {
+      "id": "en-concept-42",
+      "ok": true,
+      "why": "Defines variable role and classification by role, though truncated."
+    },
+    {
+      "id": "en-concept-43",
+      "ok": true,
+      "why": "Lists the metadata columns accompanying each variable in the tables."
+    },
+    {
+      "id": "en-concept-44",
+      "ok": true,
+      "why": "Passage directly states subject-level observations use Interventions, Events, or Findings classes."
+    },
+    {
+      "id": "en-concept-46",
+      "ok": true,
+      "why": "Passage states Section 1 Introduction provides overall introduction to v3.4 models."
+    },
+    {
+      "id": "en-concept-47",
+      "ok": true,
+      "why": "Directly states changes between versions are in Appendix E, Revision History."
+    },
+    {
+      "id": "en-concept-48",
+      "ok": true,
+      "why": "Directly states sponsors should only submit collected or derived domain datasets."
+    },
+    {
+      "id": "en-concept-49",
+      "ok": true,
+      "why": "Passage directly states other SDTM variables are allowed except when explicitly stated."
+    },
+    {
+      "id": "en-concept-50",
+      "ok": false,
+      "why": "Mentions descriptive metadata attributes but does not specify which attributes should be included."
+    },
+    {
+      "id": "en-concept-51",
+      "ok": true,
+      "why": "Passage directly states value-level metadata should be a separate section of Define-XML document."
+    },
+    {
+      "id": "en-concept-52",
+      "ok": true,
+      "why": "States additional timing variables can be added as needed, with exceptions."
+    },
+    {
+      "id": "en-concept-53",
+      "ok": true,
+      "why": "Specifies variable order: Identifiers, Topic, Qualifier, Timing, per SDTM sections."
+    },
+    {
+      "id": "en-concept-54",
+      "ok": true,
+      "why": "States datasets named consistent with domain code, e.g., DM becomes dm.xpt."
+    },
+    {
+      "id": "en-concept-55",
+      "ok": true,
+      "why": "Explains origin metadata purpose: unambiguously communicate data source origin to reviewer."
+    },
+    {
+      "id": "en-concept-56",
+      "ok": true,
+      "why": "Passage explicitly states other CD variables lack --TESTCD restrictions."
+    },
+    {
+      "id": "en-concept-57",
+      "ok": true,
+      "why": "Passage directly states variable names, formats, and data types should be consistent across studies."
+    },
+    {
+      "id": "en-concept-58",
+      "ok": true,
+      "why": "Passage recommends all upper case with stated exceptions, directly answering the question."
+    },
+    {
+      "id": "en-concept-59",
+      "ok": true,
+      "why": "States submission manner varies by sponsor's coding practice and analysis requirements."
+    },
+    {
+      "id": "en-concept-60",
+      "ok": true,
+      "why": "Passage directly explains handling of Other, Specify events with --TERM and --PRESP."
+    },
+    {
+      "id": "en-concept-61",
+      "ok": true,
+      "why": "Passage states controlled terminology terms should use the case from the source codelist."
+    },
+    {
+      "id": "en-concept-62",
+      "ok": true,
+      "why": "Passage directly states Y/N values may be extended to U or NA."
+    },
+    {
+      "id": "en-concept-63",
+      "ok": true,
+      "why": "Passage directly explains why character-based type is used for ISO 8601 dates."
+    },
+    {
+      "id": "en-concept-64",
+      "ok": true,
+      "why": "Describes visit variables VISIT, VISITNUM, VISITDY representing clinical encounters/visits."
+    },
+    {
+      "id": "en-concept-65",
+      "ok": true,
+      "why": "Passage identifies COINCIDENT and ONGOING as inappropriate for --STRF relative timing."
+    },
+    {
+      "id": "en-concept-66",
+      "ok": true,
+      "why": "Passage states date/time of collection goes into --DTC field."
+    },
+    {
+      "id": "en-concept-67",
+      "ok": true,
+      "why": "Passage shows VSALL with VSSTAT NOT DONE indicates visit with no vital signs."
+    },
+    {
+      "id": "en-concept-68",
+      "ok": true,
+      "why": "Passage states --REASPF represents reason a test was performed in Findings."
+    },
+    {
+      "id": "en-concept-69",
+      "ok": true,
+      "why": "Passage states --OCCUR is Y/N for prespecified interventions/events, answering presence/absence."
+    },
+    {
+      "id": "en-concept-70",
+      "ok": true,
+      "why": "Passage states split domains may have additional regulator-defined splitting conventions."
+    },
+    {
+      "id": "en-procedural-01",
+      "ok": true,
+      "why": "Defines LBORRES, LBORRESU, LBORNRLO for original result, units, lower limit."
+    },
+    {
+      "id": "en-procedural-02",
+      "ok": true,
+      "why": "Defines LBSTRESC, LBSTRESU, LBSTNRLO for standardized result, unit, lower limit."
+    },
+    {
+      "id": "en-procedural-03",
+      "ok": true,
+      "why": "MB holds organism finding; MS holds susceptibility result per organism."
+    },
+    {
+      "id": "en-procedural-04",
+      "ok": true,
+      "why": "LBSTAT records not done; LBREASND records reason, used together."
+    },
+    {
+      "id": "en-procedural-05",
+      "ok": true,
+      "why": "LBNAM is defined as vendor/laboratory name that performed the test."
+    },
+    {
+      "id": "en-procedural-06",
+      "ok": true,
+      "why": "Passage identifies LBLOINC (LOINC code) and LBTESTCD (lab short name) as the two variables."
+    },
+    {
+      "id": "en-procedural-07",
+      "ok": true,
+      "why": "LBSPEC defines specimen type; LBCAT grouping qualifier with URINALYSIS example."
+    },
+    {
+      "id": "en-procedural-08",
+      "ok": true,
+      "why": "LBSCAT subcategory variable, with DIFFERENTIAL example, answers the question."
+    },
+    {
+      "id": "en-procedural-09",
+      "ok": true,
+      "why": "Passage defines LBFAST (fasting status) and LBDTC (collection date) variables."
+    },
+    {
+      "id": "en-procedural-10",
+      "ok": true,
+      "why": "Lists LBTPT/LBTPTNUM and general --TPT/--TPTNUM equivalents with definitions."
+    },
+    {
+      "id": "en-procedural-11",
+      "ok": true,
+      "why": "EG dataset records ECG results; --EVAL variable records evaluator."
+    },
+    {
+      "id": "en-procedural-12",
+      "ok": true,
+      "why": "VS dataset holds vital signs; --DY gives study day of collection."
+    },
+    {
+      "id": "en-procedural-13",
+      "ok": true,
+      "why": "LBNRIND holds indicator; LBSTNRC holds textual normal range for ordinal results."
+    },
+    {
+      "id": "en-procedural-14",
+      "ok": true,
+      "why": "SUPPQUAL stores nonstandard qualifiers; CO stores free-text comments."
+    },
+    {
+      "id": "en-procedural-15",
+      "ok": true,
+      "why": "Identifies BE as Biospecimen Events and BS as Biospecimen Findings."
+    },
+    {
+      "id": "en-procedural-16",
+      "ok": true,
+      "why": "Gives LB structure and LBSEQ sequence number for unique subject records"
+    },
+    {
+      "id": "en-procedural-17",
+      "ok": true,
+      "why": "LBDRVFL marks derived records; LBANMETH describes analysis method (eGFR example)."
+    },
+    {
+      "id": "en-procedural-18",
+      "ok": true,
+      "why": "LBTOXGR holds grade; LBTOX describes the toxicity being graded."
+    },
+    {
+      "id": "en-procedural-19",
+      "ok": true,
+      "why": "Identifies LBLLOD and its general-model equivalent --LLOD."
+    },
+    {
+      "id": "en-procedural-20",
+      "ok": true,
+      "why": "Identifies IS dataset for immunogenicity specimen assessments with structure."
+    },
+    {
+      "id": "en-procedural-21",
+      "ok": true,
+      "why": "Lists MB (Microbiology Specimen) and MI (Microscopic Findings) datasets."
+    },
+    {
+      "id": "en-procedural-22",
+      "ok": true,
+      "why": "Identifies PP for parameters, PC for concentrations, RELREC for related records."
+    },
+    {
+      "id": "en-procedural-23",
+      "ok": true,
+      "why": "Identifies LBMETHOD for test method and --METHOD as administration equivalent."
+    },
+    {
+      "id": "en-procedural-24",
+      "ok": true,
+      "why": "Identifies LBSPCUFL for usability and LBSPCCND for specimen condition."
+    },
+    {
+      "id": "en-procedural-25",
+      "ok": true,
+      "why": "Passage defines LBLOBXFL and LBBLFL as the two flags."
+    },
+    {
+      "id": "en-procedural-26",
+      "ok": true,
+      "why": "LBCLSIG captures clinical significance; --EVAL identifies evaluator who made judgment."
+    },
+    {
+      "id": "en-procedural-27",
+      "ok": true,
+      "why": "Passage defines VISITNUM, VISIT, VISITDY for LB with labels matching question."
+    },
+    {
+      "id": "en-procedural-28",
+      "ok": true,
+      "why": "Passage lists LBDTC and LBENDTC as start/end specimen collection date/time variables."
+    },
+    {
+      "id": "en-procedural-29",
+      "ok": true,
+      "why": "LBTPTREF names the reference point; LBELTM holds elapsed time from it."
+    }
+  ]
+}

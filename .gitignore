@@ -18,3 +18,7 @@ config.toml
 
 # Статья
 /article
+
+# Python: кэш байткода
+__pycache__/
+*.pyc

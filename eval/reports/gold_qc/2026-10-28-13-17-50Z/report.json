@@ -1,0 +1,109 @@
+{
+  "mode": "out-of-scope",
+  "items": 20,
+  "passed": 20,
+  "rate": 1.0,
+  "seconds": 3.7,
+  "results": [
+    {
+      "id": "en-outofscope-01",
+      "ok": true,
+      "why": "ISO 15189 is a separate standard, not covered by CDISC SDTM/SDTMIG documents."
+    },
+    {
+      "id": "en-outofscope-02",
+      "ok": true,
+      "why": "CLSI documents are outside CDISC SDTM/SDTMIG scope."
+    },
+    {
+      "id": "en-outofscope-03",
+      "ok": true,
+      "why": "CLSI linearity verification is outside CDISC SDTM/SDTMIG scope."
+    },
+    {
+      "id": "en-outofscope-04",
+      "ok": true,
+      "why": "Clinical treatment question, not about SDTM data structure or submission."
+    },
+    {
+      "id": "en-outofscope-05",
+      "ok": true,
+      "why": "Reference intervals are clinical/lab practice, not defined in CDISC SDTM/IG documents."
+    },
+    {
+      "id": "en-outofscope-06",
+      "ok": true,
+      "why": "Analyser validation is a laboratory practice/CLSI/ISO topic, not covered by SDTM/SDTMIG."
+    },
+    {
+      "id": "en-outofscope-07",
+      "ok": true,
+      "why": "ISO 22870 is a separate standard, not covered by CDISC SDTM/SDTMIG documents."
+    },
+    {
+      "id": "en-outofscope-08",
+      "ok": true,
+      "why": "CKD-EPI equation is clinical calculation, not SDTM/SDTMIG data structure content."
+    },
+    {
+      "id": "en-outofscope-09",
+      "ok": true,
+      "why": "Clinical lab turnaround time is practice/operations, not SDTM data structure."
+    },
+    {
+      "id": "en-outofscope-10",
+      "ok": true,
+      "why": "Levey-Jennings charts are lab QC practice, not covered by SDTM/SDTMIG."
+    },
+    {
+      "id": "en-outofscope-11",
+      "ok": true,
+      "why": "Sigma metrics and QC plan design are laboratory practice, not CDISC SDTM content."
+    },
+    {
+      "id": "en-outofscope-12",
+      "ok": true,
+      "why": "Westgard rules are clinical lab QC practice, not covered in CDISC SDTM/SDTMIG."
+    },
+    {
+      "id": "en-outofscope-13",
+      "ok": true,
+      "why": "LOINC mapping policy is a lab terminology standard, not covered by SDTM/SDTMIG documents."
+    },
+    {
+      "id": "en-outofscope-14",
+      "ok": true,
+      "why": "HL7 FHIR mapping is outside CDISC SDTM/SDTMIG scope."
+    },
+    {
+      "id": "en-outofscope-15",
+      "ok": true,
+      "why": "Analysis datasets are outside SDTM/SDTMIG scope; they cover tabulation, not analysis structures."
+    },
+    {
+      "id": "en-outofscope-16",
+      "ok": true,
+      "why": "Define-XML generation is a separate standard, not described in SDTM/SDTMIG documents."
+    },
+    {
+      "id": "en-outofscope-17",
+      "ok": true,
+      "why": "IVDR classification is a regulatory standard outside CDISC SDTM/SDTMIG scope."
+    },
+    {
+      "id": "en-outofscope-18",
+      "ok": true,
+      "why": "Delta check limits are clinical laboratory practice, not covered by CDISC SDTM/SDTMIG."
+    },
+    {
+      "id": "en-outofscope-19",
+      "ok": true,
+      "why": "Clinical communication of critical results is practice guidance, not SDTM/SDTMIG data structure content."
+    },
+    {
+      "id": "en-outofscope-20",
+      "ok": true,
+      "why": "CLSI EP28 reference interval requirements are outside CDISC SDTM/SDTMIG scope."
+    }
+  ]
+}

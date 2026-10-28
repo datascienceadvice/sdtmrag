@@ -1,27 +1,32 @@
 cff-version: 1.2.0
-message: "Если вы используете эту программу в научной работе, ссылайтесь на неё так:"
-title: "sdtmrag: RAG по документации CDISC SDTM/SDTMIG с очисткой PDF-текста и оценкой качества поиска"
+message: "If you use this software or the benchmark in academic work, please cite it as below."
+title: >-
+  sdtmrag: a benchmark and evaluation protocol for document-grounded assistants
+  over CDISC SDTM/SDTMIG laboratory data standards
 abstract: >-
-  Поисково-генеративная система (RAG) по стандарту CDISC SDTM и руководству
-  SDTMIG. Включает модуль очистки текста, извлекаемого из PDF, чанкер с
-  проверкой заголовков разделов, локальные эмбеддинги и кросс-энкодерный реранк
-  (ONNX), генерацию ответов через DeepSeek API и протокол оценки качества с
-  эталонным набором вопросов на английском и русском языках.
+  Retrieval-augmented question answering over the CDISC Study Data Tabulation
+  Model and its Implementation Guide, with a PDF text cleaning module, a
+  heading-aware chunker, local ONNX embeddings and a cross-encoder reranker, and
+  a benchmark of 193 English questions whose locators are verbatim passages
+  rather than chunk identifiers. The repository contains the lexical (BM25),
+  dense and hybrid retrieval baselines, the closed-book control, the benchmark
+  construction and verification scripts, and the statistical analysis that
+  produces every number reported in the paper.
 type: software
 license: MIT
 keywords:
   - CDISC
   - SDTM
   - SDTMIG
-  - RAG
   - retrieval-augmented generation
-  - клиническая лабораторная диагностика
+  - laboratory medicine
   - PDF text extraction
   - information retrieval evaluation
+  - benchmark
 authors:
-  - family-names: "<фамилия>"
-    given-names: "<имя>"
+  - family-names: "<surname>"
+    given-names: "<given name>"
     orcid: "https://orcid.org/0000-0000-0000-0000"
-    affiliation: "<учреждение>"
-version: 0.1.0
-date-released: "2026-09-24"
+    affiliation: "<institution>"
+version: 1.0.0
+date-released: "2026-10-28"

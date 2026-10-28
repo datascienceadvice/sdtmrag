@@ -64,6 +64,10 @@ pub struct GoldItem {
     /// попадание в любой из локаторов считается успехом
     #[serde(default)]
     pub expected: Vec<Locator>,
+    /// все локаторы описывают одно и то же знание в разных документах:
+    /// ответ засчитывается, если найден любой из них, а не часть из них
+    #[serde(default)]
+    pub any_of: bool,
     #[serde(default)]
     pub reference_answer: Option<String>,
     /// вопрос сгенерирован автоматически и ещё не проверен экспертом
@@ -238,7 +242,11 @@ pub struct RetrievalScore {
 
 /// Считает метрики одного вопроса по ранжированному списку чанков.
 pub fn score_retrieval(item: &GoldItem, retrieved: &[Retrieved], ks: &[usize]) -> RetrievalScore {
-    let n_loc = item.expected.len().max(1) as f64;
+    let n_loc = if item.any_of {
+        1.0
+    } else {
+        item.expected.len().max(1) as f64
+    };
     let mut out = RetrievalScore::default();
 
     let first = retrieved
@@ -250,12 +258,16 @@ pub fn score_retrieval(item: &GoldItem, retrieved: &[Retrieved], ks: &[usize]) -
 
     for &k in ks {
         let top = &retrieved[..retrieved.len().min(k)];
-        // сколько уникальных локаторов закрыто
-        let closed = item
-            .expected
-            .iter()
-            .filter(|l| top.iter().any(|r| l.matches(&r.chunk)))
-            .count();
+        // сколько уникальных локаторов закрыто; при any_of достаточно одного,
+        // потому что локаторы — это одно и то же знание в разных документах
+        let closed = if item.any_of {
+            usize::from(top.iter().any(|r| item.matches(&r.chunk)))
+        } else {
+            item.expected
+                .iter()
+                .filter(|l| top.iter().any(|r| l.matches(&r.chunk)))
+                .count()
+        };
         // сколько чанков в топ-k релевантны
         let rel = top.iter().filter(|r| item.matches(&r.chunk)).count();
 
@@ -285,8 +297,15 @@ pub fn score_retrieval(item: &GoldItem, retrieved: &[Retrieved], ks: &[usize]) -
             }
         }
         let idcg = n_loc;
-        out.ndcg_at_k
-            .insert(k, if idcg > 0.0 { (dcg / idcg).min(1.0) } else { 0.0 });
+        let ndcg = if item.any_of {
+            // бинарная релевантность: знание либо найдено, либо нет
+            if closed > 0 { 1.0 } else { 0.0 }
+        } else if idcg > 0.0 {
+            (dcg / idcg).min(1.0)
+        } else {
+            0.0
+        };
+        out.ndcg_at_k.insert(k, ndcg);
     }
     out.hits_total = retrieved.iter().filter(|r| item.matches(&r.chunk)).count();
     out
@@ -369,6 +388,40 @@ fn parse_judge_json(raw: &str) -> Result<JudgeScore> {
 // Прогон
 // ---------------------------------------------------------------------------
 
+/// Способ поиска, который оценивается в прогоне.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Retriever {
+    /// плотные эмбеддинги (+ опциональный кросс-энкодер)
+    Dense,
+    /// лексический BM25 по тем же чанкам
+    Bm25,
+    /// слияние плотного и лексического ранжирований (RRF)
+    Hybrid,
+}
+
+impl Retriever {
+    pub fn parse(s: &str) -> Result<Self> {
+        match s.to_ascii_lowercase().as_str() {
+            "dense" => Ok(Retriever::Dense),
+            "bm25" | "lexical" => Ok(Retriever::Bm25),
+            "hybrid" | "rrf" => Ok(Retriever::Hybrid),
+            other => anyhow::bail!("unknown retriever: {other} (expected dense, bm25 or hybrid)"),
+        }
+    }
+
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Retriever::Dense => "dense",
+            Retriever::Bm25 => "bm25",
+            Retriever::Hybrid => "hybrid",
+        }
+    }
+
+    pub fn needs_dense(self) -> bool {
+        !matches!(self, Retriever::Bm25)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct RunOptions {
     pub ks: Vec<usize>,
@@ -376,6 +429,7 @@ pub struct RunOptions {
     pub judge: bool,
     pub context_k: usize,
     pub limit: Option<usize>,
+    pub retriever: Retriever,
 }
 
 impl Default for RunOptions {
@@ -386,6 +440,7 @@ impl Default for RunOptions {
             judge: false,
             context_k: 6,
             limit: None,
+            retriever: Retriever::Dense,
         }
     }
 }
@@ -422,6 +477,7 @@ pub struct ConfigResult {
     pub label: String,
     pub store: String,
     pub embedding_model: String,
+    pub retriever: String,
     pub rerank: bool,
     pub rerank_model: Option<String>,
     pub chunks: i64,
@@ -504,8 +560,19 @@ pub async fn evaluate_store(
     }
     let cfg = &cfg;
 
-    let mut embedder = Embedder::from_config(cfg)?;
-    let mut reranker = if opts.rerank && cfg.rerank.enabled {
+    // Для лексического baseline модель эмбеддингов не нужна: он не должен
+    // требовать загрузки ONNX-сессий и не должен зависеть от размерности индекса.
+    let mut embedder = if opts.retriever.needs_dense() {
+        Some(Embedder::from_config(cfg)?)
+    } else {
+        None
+    };
+    let bm25 = if opts.retriever.needs_dense() && opts.retriever != Retriever::Hybrid {
+        None
+    } else {
+        Some(crate::bm25::Bm25Index::build(&chunks))
+    };
+    let mut reranker = if opts.rerank && cfg.rerank.enabled && opts.retriever != Retriever::Bm25 {
         Some(Reranker::new(
             &cfg.rerank.model,
             &cfg.models_dir,
@@ -524,14 +591,16 @@ pub async fn evaluate_store(
     };
 
     // прогрев: первый запрос включает ленивую инициализацию ONNX-сессий
-    let _ = pipeline::rank(
-        &chunks,
-        &embedder.embed_query("warmup query")?,
-        "warmup query",
-        &cfg.rerank,
-        1,
-        reranker.as_mut(),
-    )?;
+    if let Some(emb) = embedder.as_mut() {
+        let _ = pipeline::rank(
+            &chunks,
+            &emb.embed_query("warmup query")?,
+            "warmup query",
+            &cfg.rerank,
+            1,
+            reranker.as_mut(),
+        )?;
+    }
 
     let mut results: Vec<ItemResult> = Vec::with_capacity(items.len());
     let mut lat: Vec<f64> = Vec::with_capacity(items.len());
@@ -542,15 +611,28 @@ pub async fn evaluate_store(
 
     for (i, item) in items.iter().enumerate() {
         let t0 = Instant::now();
-        let qv = embedder.embed_query(&item.question)?;
-        let retrieved = pipeline::rank(
-            &chunks,
-            &qv,
-            &item.question,
-            &cfg.rerank,
-            max_k,
-            reranker.as_mut(),
-        )?;
+        let retrieved = match opts.retriever {
+            Retriever::Dense => {
+                let emb = embedder.as_mut().expect("dense retriever requires an embedder");
+                let qv = emb.embed_query(&item.question)?;
+                pipeline::rank(&chunks, &qv, &item.question, &cfg.rerank, max_k, reranker.as_mut())?
+            }
+            Retriever::Bm25 => bm25
+                .as_ref()
+                .expect("bm25 index is built for this retriever")
+                .retrieved(&chunks, &item.question, max_k),
+            Retriever::Hybrid => {
+                let emb = embedder.as_mut().expect("hybrid retriever requires an embedder");
+                let qv = emb.embed_query(&item.question)?;
+                let dense =
+                    pipeline::rank(&chunks, &qv, &item.question, &cfg.rerank, max_k, reranker.as_mut())?;
+                let lexical = bm25
+                    .as_ref()
+                    .expect("bm25 index is built for this retriever")
+                    .retrieved(&chunks, &item.question, max_k);
+                crate::bm25::rrf(&dense, &lexical, max_k)
+            }
+        };
         let dt = t0.elapsed().as_secs_f64() * 1000.0;
         lat.push(dt);
 
@@ -576,20 +658,25 @@ pub async fn evaluate_store(
                 .take(opts.context_k)
                 .cloned()
                 .collect();
-            let text = pipeline::generate(client, &item.question, &ctx_items).await?;
-            let score = judge_answer(client, item, &ctx_items, &text).await?;
-            ans.n += 1;
-            ans.faithfulness += score.faithfulness;
-            ans.citation_accuracy += score.citation_accuracy;
-            ans.correctness += score.correctness;
-            if !item.answerable {
-                ans.refusals_total += 1;
-                if score.refusal_correct.unwrap_or(false) {
-                    ans.refusals_correct += 1;
+            // Сбой одного обращения к API не должен обнулять многочасовой прогон:
+            // вопрос пропускается и помечается в отчёте, а не прерывает оценку.
+            match judge_one(client, item, &ctx_items).await {
+                Ok((text, score)) => {
+                    ans.n += 1;
+                    ans.faithfulness += score.faithfulness;
+                    ans.citation_accuracy += score.citation_accuracy;
+                    ans.correctness += score.correctness;
+                    if !item.answerable {
+                        ans.refusals_total += 1;
+                        if score.refusal_correct.unwrap_or(false) {
+                            ans.refusals_correct += 1;
+                        }
+                    }
+                    answer = Some(text);
+                    judge = Some(score);
                 }
+                Err(e) => eprintln!("[eval] judge failed for {}: {e}", item.id),
             }
-            answer = Some(text);
-            judge = Some(score);
         }
 
         eprintln!(
@@ -627,6 +714,7 @@ pub async fn evaluate_store(
         label: label.to_string(),
         store: store_path.display().to_string(),
         embedding_model: cfg.embedding.model.clone(),
+        retriever: opts.retriever.as_str().to_string(),
         rerank: opts.rerank && cfg.rerank.enabled,
         rerank_model: if opts.rerank && cfg.rerank.enabled {
             Some(cfg.rerank.model.clone())
@@ -641,6 +729,16 @@ pub async fn evaluate_store(
         answers: if opts.judge { Some(ans) } else { None },
         items: results,
     })
+}
+
+async fn judge_one(
+    client: &DeepSeekClient,
+    item: &GoldItem,
+    ctx_items: &[Retrieved],
+) -> Result<(String, JudgeScore)> {
+    let text = pipeline::generate(client, &item.question, ctx_items).await?;
+    let score = judge_answer(client, item, ctx_items, &text).await?;
+    Ok((text, score))
 }
 
 async fn judge_answer(
@@ -880,10 +978,76 @@ mod tests {
                 row: None,
                 contains: None,
             }],
+            any_of: false,
             reference_answer: None,
             needs_review: false,
             notes: None,
         }
+    }
+
+    #[test]
+    fn any_of_item_counts_one_alias_as_full_recall() {
+        // Один и тот же факт записан в рабочей книге и в PDF: попадание в любое
+        // из двух мест должно закрывать вопрос полностью, иначе конфигурация,
+        // которая находит прозаическую версию, штрафуется за верный ответ.
+        let mut it = item();
+        it.any_of = true;
+        it.expected = vec![
+            Locator {
+                source: "book.xlsx".into(),
+                page: None,
+                section: None,
+                sheet: Some("Variables".into()),
+                row: Some(7),
+                contains: None,
+            },
+            Locator {
+                source: "doc.pdf".into(),
+                page: Some(10),
+                section: None,
+                sheet: None,
+                row: None,
+                contains: None,
+            },
+        ];
+        let retrieved = vec![Retrieved {
+            score: 1.0,
+            chunk: chunk("doc.pdf", 10, "s", "text"),
+        }];
+        let s = score_retrieval(&it, &retrieved, &[1, 5]);
+        assert_eq!(s.recall_at_k[&5], 1.0);
+        assert_eq!(s.hit_at_k[&5], 1.0);
+        assert_eq!(s.ndcg_at_k[&5], 1.0);
+    }
+
+    #[test]
+    fn multi_locator_item_without_any_of_needs_every_locator() {
+        let mut it = item();
+        it.expected = vec![
+            Locator {
+                source: "doc.pdf".into(),
+                page: Some(10),
+                section: None,
+                sheet: None,
+                row: None,
+                contains: None,
+            },
+            Locator {
+                source: "doc.pdf".into(),
+                page: Some(20),
+                section: None,
+                sheet: None,
+                row: None,
+                contains: None,
+            },
+        ];
+        let retrieved = vec![Retrieved {
+            score: 1.0,
+            chunk: chunk("doc.pdf", 10, "s", "text"),
+        }];
+        let s = score_retrieval(&it, &retrieved, &[5]);
+        assert_eq!(s.recall_at_k[&5], 0.5, "закрыт один локатор из двух");
+        assert_eq!(s.hit_at_k[&5], 1.0);
     }
 
     #[test]

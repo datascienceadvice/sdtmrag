@@ -1,5 +1,3 @@
-**English** | [Русский](README.ru.md)
-
 # sdtmrag
 
 RAG over the CDISC SDTM / SDTMIG documentation. Local embeddings and reranking (ONNX), answer generation via the DeepSeek API, CLI + REST API.
@@ -53,8 +51,8 @@ cargo run --release -- index --rebuild
 cargo run --release -- query "What is SUPPQUAL used for?" --no-generate --top-k 3
 
 # evaluate against the gold set
-cargo run --release -- eval --gold eval/gold.en.jsonl --gold eval/gold.ru.jsonl \
-    --store data/index_clean.sqlite=baseline --k 1,3,5,10
+cargo run --release -- eval --gold eval/gold.en.jsonl \
+    --store data/index_clean.sqlite=clean --k 1,3,5,10
 
 # or build with the REST API
 cargo build --release --features server
@@ -216,106 +214,123 @@ reached 3,000 versus 372 after the fix; this is verified by
 
 ## Evaluation
 
-### Gold set
+### Benchmark
 
-`eval/gold.en.jsonl` (71 questions) and `eval/gold.ru.jsonl` (25 questions) — one
-JSON object per line:
+`eval/gold.en.jsonl` holds 193 English questions, one JSON object per line:
 
 ```json
 {
-  "id": "en-lb-05",
-  "question": "What does the variable LBORRES represent in the LB domain?",
-  "lang": "en",
-  "topic": "LB",
+  "id": "en-lookup-06",
+  "question": "Which LB variable records the unit in which the original result was reported, for example g/L?",
+  "register": "lookup",
+  "stratum": "tabular",
   "answerable": true,
-  "expected": [{"source": "SDTMIG_v3.4.xlsx", "sheet": "Variables", "row": 892}],
-  "reference_answer": "Result or Finding in Original Units (Char, role: Result Qualifier). ...",
-  "needs_review": true,
-  "notes": "auto: SDTMIG_v3.4.xlsx Variables row 892 (LB domain)"
+  "expected": [
+    {"source": "SDTMIG_v3.4.xlsx", "sheet": "Variables", "row": 893},
+    {"source": "SDTMIG v3.4-FINAL_2022-07-21.pdf",
+     "contains": "Original units in which the data were collected. The unit for LBORRES."}
+  ],
+  "any_of": true,
+  "reference_answer": "Version: SDTMIG v3.4 ... CDISC Notes: Original units in which the data were collected. ...",
+  "provenance": "index-extracted",
+  "needs_review": true
 }
 ```
 
-A locator is a *place in the document* rather than a specific chunk: a file plus a
-page, a section, or an Excel sheet+row. This makes the same set applicable to
-indexes with different chunking, and the metrics independent of how the text was
-split. Locator comparison is insensitive to case, whitespace and typography, so it
-works on both the "raw" and the cleaned index.
+Three properties make the benchmark independent of the pipeline it evaluates:
 
-Composition of the set:
+1. **A locator is content, not layout.** It is a source plus a verbatim passage, never
+   a chunk id and never a section title. Section titles are themselves changed by the
+   cleaning step, so a title-based locator would measure the preprocessing rather than
+   the retrieval. Every locator is validated against *all* compared indexes before it
+   is accepted (`eval/verify_gold.py`).
+2. **A reference answer is extracted, not written.** It is the text at the locator, so
+   its correctness does not depend on an annotator. The verification script checks that
+   it occurs verbatim in the source.
+3. **Duplicates are explicit.** Many variable definitions appear both as a workbook row
+   and inside the specification table of the PDF. Such items carry an alternative
+   locator and `any_of: true`: the answer counts if either version is retrieved.
+   Without this, a configuration that retrieves the prose version would be penalised
+   for finding the right answer.
 
-| Topic | Questions | Gold source |
-|---|---:|---|
-| LB (laboratory test domain variables) | 36 | SDTMIG v3.4, Variables sheet |
-| SDTM general model | 17 | SDTM v2.1, Variables sheet |
-| PDF sections | 25 | SDTMIG v3.4 / SDTM v2.1 |
-| Dataset structure | 11 | SDTMIG v3.4, Datasets sheet |
-| Outside the documentation (`answerable: false`) | 7 | — |
+Composition:
 
-Questions marked `needs_review: true` were generated automatically from the CDISC
-definitions and require expert review; the PDF-section questions were written by
-hand. Every locator is checked programmatically: it must intersect at least one
-chunk of the index.
+| Register | Questions | Locator | Target |
+|---|---:|---|---|
+| `lookup` | 55 | 1 (+1 alias) | a variable definition |
+| `structure` | 20 | 1 (+1 alias) | a dataset description |
+| `concept` | 69 | 1 | a narrative section |
+| `procedural` | 29 | 2-3 | a multi-step task |
+| `out-of-scope` | 20 | none | refusal |
+
+Questions were written by the authors; answers and locators are produced by
+`eval/build_gold.py` from the index. Since no laboratory specialist annotated the set,
+its quality is assessed mechanically: `eval/check_gold.py` asks an independent model
+whether each reference passage suffices to answer its question. 168 of 173 passages
+(97.1%) passed; the five failures are listed in the report and are documented as a
+limitation. The same check confirmed that all 20 unanswerable questions cannot be
+answered from the CDISC documents.
 
 ### Metrics
 
-Retrieval metrics (computed offline, with no API calls):
+Retrieval metrics are computed offline, with no API calls:
 
-- **Hit@k** — share of questions with at least one correct fragment in the top k;
-- **Recall@k** — share of gold locators covered;
-- **Precision@k** — share of relevant chunks in the top k;
-- **nDCG@k** — binary relevance, accounts for the position of the correct fragment;
-- **MRR** — reciprocal rank of the first correct fragment;
+- **Hit@5** — share of questions with a correct passage in the top 5;
+- **Recall@5** — share of gold locators covered (1 for `any_of` items if any alias is found);
+- **Precision@k**, **nDCG@k** (`[8]` in the paper), **MRR** — position-aware metrics;
 - response latency (mean / p50 / p95 / max).
 
-Metrics are broken down by question language and by topic.
+Answer quality (only with `--judge`; requires `DEEPSEEK_API_KEY`) is scored 0-1 by an
+LLM judge: **faithfulness**, **citation accuracy**, **correctness**, and for
+unanswerable questions **refusal correctness**.
 
-Answers (only with the `--judge` flag; requires `DEEPSEEK_API_KEY`) are scored from
-0 to 1 by an LLM judge:
+Inference-free baselines live next to the dense one:
 
-- **faithfulness** — share of the answer's claims supported by the supplied excerpts;
-- **citation_accuracy** — whether the `[1]`, `[2]` markers match the excerpts they are attached to;
-- **correctness** — agreement with the reference answer; for questions outside the
-  documentation, an explicit refusal counts as correct;
-- **refusal_correct** — whether the system refused to answer correctly.
+| Baseline | Command |
+|---|---|
+| lexical (BM25 over the same chunks) | `--retriever bm25 --no-rerank` |
+| dense (bge-small-en-v1.5) | default |
+| fusion of both (RRF, k = 60) | `--retriever hybrid --no-rerank` |
+| closed book (no retrieval at all) | `python eval/closedbook.py` |
 
 ### Ablations
-
-Ready-to-use configurations for comparison live in `eval/configs/`:
 
 | Config | Cleaning | Chunking | What it isolates |
 |---|---|---|---|
 | `raw.toml` | off | `target_tokens = 900` | baseline on raw text |
 | `clean.toml` | on | same as `raw.toml` | the effect of text cleaning |
-| `clean_tuned.toml` | on | `target_tokens = 400`, `min_chunk_chars = 600` | the effect of fitting chunks to the encoder window |
+| `clean_tuned.toml` | on | `target_tokens = 400`, `min_chunk_chars = 600` | fitting chunks to the encoder window |
 
 ```bash
 for c in raw clean clean_tuned; do
   sdtmrag index --rebuild --config eval/configs/$c.toml
 done
 
-sdtmrag eval --gold eval/gold.en.jsonl --gold eval/gold.ru.jsonl \
-  --store data/index_raw.sqlite=raw \
-  --store data/index_clean.sqlite=clean \
-  --store data/index_clean_tuned.sqlite=clean+tuned
+python eval/build_gold.py          # extract answers, validate locators
+python eval/verify_gold.py         # locators in every index, verbatim references
+python eval/check_gold.py          # does each passage answer its question?
+
+for r in dense bm25 hybrid; do
+  sdtmrag eval --gold eval/gold.en.jsonl --retriever $r --no-rerank     --store data/index_raw.sqlite=raw     --store data/index_clean.sqlite=clean     --store data/index_clean_tuned.sqlite=clean+tuned     --out eval/reports/${r}_norerank
+done
 ```
 
 An index carries its own metadata (embedding model, vector dimension, chunking and
-cleaning parameters, cleaning statistics, list of source files), so both evaluation
-and search take the model from the index rather than from the current configuration
-file, and `sdtmrag stats` shows the provenance of each index. If the query vector
-dimension does not match the index vector dimension, the search fails with an
-explicit error — otherwise comparing vectors of different lengths would silently
-produce a wrong result.
-
-Indexes used in the reports:
+cleaning parameters, cleaning statistics, list of source files), so both evaluation and
+search take the model from the index rather than from the current configuration file. If
+the query vector dimension does not match the index, search fails with an explicit error
+instead of silently returning a wrong ranking.
 
 | File | What it is |
 |---|---|
-| `data/index_clean.sqlite` | the best measured configuration (cleaning on); used by default |
+| `data/index_clean.sqlite` | cleaning on; the primary index |
 | `data/index_raw.sqlite` | cleaning off — the baseline |
 | `data/index_clean_tuned.sqlite` | cleaning + chunks fitted to the encoder window |
-| `data/index_clean_e5.sqlite` | cleaning + multilingual-e5-small (the cross-lingual slice) |
-| `data/index_legacy.sqlite` | build predating the section-heading fix (6,296 chunks); kept as a reference point |
+
+Earlier material of the previous, bilingual version of this study (a Russian gold set, a
+multilingual embedding configuration, the reports produced with it and the Russian README)
+is kept in `eval/legacy/` for reference and is not used in the current evaluation. Those
+numbers were produced with the earlier benchmark and are superseded.
 
 ## Configuration
 
@@ -381,88 +396,73 @@ without isolation from other processes:
 
 | Configuration | Chunks | Indexing | Index size | Search (p50) |
 |---|---:|---:|---:|---:|
-| `raw` (no cleaning) | 3,461 | 22.5 min | 10.6 MB | 80 ms |
-| `clean` | 3,418 | 15.8 min | 10.3 MB | 68 ms |
-| `clean+tuned` | 4,111 | 41.6 min | 12.2 MB | 65 ms |
+| `raw` (no cleaning) | 3,437 | 18.2 min | 10.1 MB | 24 ms |
+| `clean` | 3,395 | 17.1 min | 9.8 MB | 23 ms |
+| `clean+tuned` | 4,092 | 22.9 min | 11.6 MB | 26 ms |
 
 Search without reranking takes tens of milliseconds. **Reranking is orders of
 magnitude more expensive**: with 20 candidates and a query+passage length of 256
-tokens it takes about 18 s per query; with 50 candidates and 512 tokens, about
-130 s. The reason is that cross-encoder cost is linear in both the number of
+tokens it takes about 13 s per query on the corpus used here; with 50 candidates and
+512 tokens, about 130 s. The reason is that cross-encoder cost is linear in both the number of
 candidates and the passage length, and bge-reranker-base is a 110M-parameter model
 running on CPU. For interactive use, reranking has to be bounded
 (`rerank.candidates`, `rerank.max_length`) or moved to a GPU.
 
 ## Evaluation results
 
-Evaluation on the 89 answerable questions of the gold set, without reranking
-(`eval/reports/`):
+Primary runs (`eval/reports/`), 173 answerable questions, no reranking:
 
-| Configuration | Hit@1 | Hit@5 | Recall@5 | nDCG@5 | MRR |
-|---|---:|---:|---:|---:|---:|
-| `raw` | 0.427 | 0.730 | 0.730 | 0.582 | 0.545 |
-| `clean` | 0.461 | **0.775** | **0.775** | **0.624** | **0.584** |
-| `clean+tuned` | **0.472** | 0.719 | 0.719 | 0.601 | 0.577 |
+| Retriever | Index | Hit@5 | Recall@5 | nDCG@5 | MRR |
+|---|---|---:|---:|---:|---:|
+| BM25 | raw | 0.711 | 0.688 | 0.618 | 0.504 |
+| BM25 | clean | 0.699 | 0.679 | 0.610 | 0.510 |
+| BM25 | clean+tuned | 0.653 | 0.636 | 0.591 | 0.481 |
+| dense | raw | **0.723** | **0.686** | 0.606 | 0.522 |
+| dense | clean | 0.682 | 0.643 | 0.584 | 0.532 |
+| dense | clean+tuned | 0.705 | 0.676 | 0.610 | 0.556 |
+| hybrid | raw | 0.792 | 0.750 | 0.672 | 0.581 |
+| hybrid | clean | **0.803** | **0.759** | **0.685** | 0.589 |
+| hybrid | clean+tuned | 0.786 | 0.747 | 0.687 | **0.603** |
 
-Text cleaning yields a statistically distinguishable gain (paired bootstrap:
-Recall@5 +0.045 [0.011; 0.090], nDCG@5 +0.042 [0.006; 0.086]). Fitting the chunk
-size to the encoder window produced no significant gain. The gap between question
-languages is nearly twofold: Recall@5 = 0.879 for English questions versus 0.478
-for Russian — a consequence of the monolingual embedding model.
+What the numbers say:
 
-Switching to a multilingual model (same corpus, cleaning and chunking) confirms
-this and closes about half the gap (`eval/reports/multilingual/`):
+- **Fusion is the only large effect.** Hybrid retrieval beats dense retrieval by
+  +0.121 Hit@5 [0.058; 0.185], McNemar P = 0.0005 (Holm-adjusted 0.002), and this
+  survives correction for the four planned primary comparisons.
+- **Text cleaning does not improve retrieval.** Hit@5 is 0.682 with cleaning against
+  0.723 without (difference -0.040 [-0.075; -0.012], unadjusted P = 0.039,
+  Holm-adjusted P = 0.08).
+- **Citation metadata was fixed by the chunker, not by cleaning.** An earlier build gave
+  82.7% of PDF chunks an unreliable section label (3,000 distinct labels for 3,707
+  chunks), because table rows beginning with a section number were accepted as chapter
+  headings. After that rule was added the share is 5.6% without cleaning and 4.7% with
+  it, so cleaning accounts for less than one of the 77 percentage points.
+- **Dense is not better than lexical.** Hit@5 0.682 versus 0.699 (P = 0.79), MRR 0.532
+  versus 0.510: on a corpus of short technical definitions, term matching carries most
+  of the signal.
+- **Chunk-size tuning does nothing measurable**, although 900-token chunks exceed the
+  512-token encoder window and are truncated at embedding time.
 
-| Embedding model | Recall@5 (en) | Recall@5 (ru) | MRR (ru) | MRR (all) |
-|---|---:|---:|---:|---:|
-| bge-small-en-v1.5 | 0.879 | 0.478 | 0.297 | 0.584 |
-| multilingual-e5-small | **0.894** | **0.696** | **0.568** | **0.655** |
+Reranking (`eval/reports/dense_rerank/`, cleaned index): Hit@5 rises from 0.682 to
+0.734, nDCG@5 from 0.584 to 0.622 and MRR from 0.532 to 0.576, but not significantly
+(difference 0.052 [-0.006; 0.110], P = 0.12) and at a median latency of 12.9 s against
+23 ms. Fusion without any reranking reaches Hit@5 0.803 at 23 ms, so for interactive use
+it is the better trade.
 
-For Russian questions the gain is significant (Hit@1 +0.304 [0.130; 0.478],
-McNemar p = 0.0156; nDCG@5 +0.260 [0.082; 0.441]), while English questions do not
-degrade.
+Answer quality and refusal (`eval/reports/judge_rerank/`, 108-question stratified
+subsample): faithfulness 0.99, citation accuracy 0.98, correctness 0.89, and correct refusal on all 19 unanswerable questions that were judged (two of the 108 items failed at the API and are excluded).
 
-Effect of reranking (89 answerable questions, 20 candidates, 256 tokens): Recall@5
-rises from 0.730 to 0.820 (`raw`), from 0.775 to 0.854 (`clean`) and from 0.719 to
-0.798 (`clean+tuned`); nDCG@5 gains +0.066…+0.094; the first position improves too
-(Hit@1 0.461 → 0.539 for `clean`). So the cross-encoder not only adds recall but
-ranks what was found more accurately, at roughly a thousand times the cost of
-vector search.
+Closed book (`eval/reports/closedbook/`, all 193 questions): correctness 0.61 on
+answerable questions, and only 65% of unanswerable questions refused — the same model
+answers 35% of questions the documentation does not cover when it has no passages to
+ground on.
 
-LLM-judge answer scoring (48 questions, `clean+tuned`): faithfulness 0.999,
-citation accuracy 0.998, correctness 0.979, 4 of 4 correct refusals. The system
-stays within the supplied excerpts and refuses to answer questions outside the
-documentation.
-
-Full reports (`report.json` and `report.md`) live in `eval/reports/`; confidence
-intervals and paired tests are provided by `eval/analyze.py`:
-
-```bash
-python eval/analyze.py --pair clean:raw --pair clean+tuned:clean \
-    eval/reports/rerank/<date>/report.json
-
-# compare runs on a common subset
-python eval/analyze.py --only-gold eval/gold.judge.jsonl \
-    eval/reports/norerank/<date>/report.json eval/reports/judge/<date>/report.json
-```
-
-### Expert validation
-
-The LLM-judge scoring and the gold set were produced by the authors of the system;
-publishing the results requires independent review by domain specialists. The
-worksheet for it is generated by a script, and the instructions for the reviewer
-are in `eval/examples/review_instructions.md`:
+Tables and figures for the paper are generated from the reports:
 
 ```bash
-python eval/make_review_sheet.py \
-    eval/reports/judge/<date>/report.json \
-    --gold eval/gold.en.jsonl --gold eval/gold.ru.jsonl \
-    --out eval/review_sheet.csv --limit 25
+python eval/tables.py --dir eval/reports/dense_norerank     --dir eval/reports/bm25_norerank --dir eval/reports/hybrid_norerank     --out article/tables.md --json article/numbers.json
+python eval/figures.py
 ```
-
-Examples of real interactions with the system (a successful answer, a false refusal
-caused by a cross-lingual retrieval failure, and a correct refusal) are analysed in
-`eval/examples/clinical_examples.md`.
 
 ## Citation
 

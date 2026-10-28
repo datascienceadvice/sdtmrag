@@ -466,11 +466,13 @@ What the numbers say:
 - **Chunk-size tuning does nothing measurable**, although 900-token chunks exceed the
   512-token encoder window and are truncated at embedding time.
 
-Reranking (`eval/reports/dense_rerank/`, cleaned index): Hit@5 rises from 0.682 to
-0.734, nDCG@5 from 0.584 to 0.622 and MRR from 0.532 to 0.576, but not significantly
-(difference 0.052 [-0.006; 0.110], P = 0.12) and at a median latency of 12.9 s against
-23 ms. Fusion without any reranking reaches Hit@5 0.803 at 23 ms, so for interactive use
-it is the better trade.
+Reranking (`eval/reports/dense_rerank*/`) depends on what it is reranking. On the index
+with encoder-matched chunks, Hit@5 rises from 0.705 to 0.780 (difference 0.075
+[0.017; 0.133], P = 0.019), nDCG@5 from 0.610 to 0.688 and MRR from 0.556 to 0.638; on the
+cleaned index the gain is 0.682 -> 0.734 (P = 0.12) and on the raw index 0.723 -> 0.728.
+The cost is decisive either way: median latency 12.8-16.0 s against 25-34 ms. Fusion
+without any reranking reaches Hit@5 0.803 at 23 ms, so for interactive use it is the
+better trade.
 
 Answer quality and refusal (`eval/reports/judge_rerank/`, 108-question stratified
 subsample): faithfulness 0.99, citation accuracy 0.98, correctness 0.89, and correct refusal on all 19 unanswerable questions that were judged (two of the 108 items failed at the API and are excluded).

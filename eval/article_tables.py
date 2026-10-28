@@ -22,9 +22,20 @@ def latest(run: str) -> str:
 
 
 def load(run: str) -> dict:
+    pattern = f"eval/reports/{run}/*/report.json"
+    if not glob.glob(pattern):
+        return {}
     d = json.loads(Path(latest(run)).read_text(encoding="utf-8"))
     return {c["label"]: {it["id"]: it for it in c["items"] if it["answerable"]}
             for c in d["configs"]}
+
+
+def load_many(*runs: str) -> dict:
+    """Объединяет прогоны, разложенные по разным каталогам (по метке индекса)."""
+    out: dict = {}
+    for run in runs:
+        out.update(load(run))
+    return out
 
 
 def val(it: dict, name: str, k: int | None) -> float:
@@ -45,7 +56,7 @@ def main() -> int:
     dense = load("dense_norerank")
     bm25 = load("bm25_norerank")
     hyb = load("hybrid_norerank")
-    rer = load("dense_rerank")
+    rer = load_many("dense_rerank", "dense_rerank2")
 
     out: list[str] = []
 
@@ -81,7 +92,9 @@ def main() -> int:
         ("Dense", "raw", dense["raw"]),
         ("Dense", "cleaned", dense["clean"]),
         ("Dense", "cleaned, tuned chunks", dense["clean+tuned"]),
-        ("Dense + cross-encoder", "cleaned", rer["clean"]),
+        ("Dense + cross-encoder", "raw", rer.get("raw")),
+        ("Dense + cross-encoder", "cleaned", rer.get("clean")),
+        ("Dense + cross-encoder", "cleaned, tuned chunks", rer.get("clean+tuned")),
         ("Hybrid (RRF)", "raw", hyb["raw"]),
         ("Hybrid (RRF)", "cleaned", hyb["clean"]),
         ("Hybrid (RRF)", "cleaned, tuned chunks", hyb["clean+tuned"]),
@@ -93,12 +106,15 @@ def main() -> int:
         "|---|---|---:|---:|---:|---:|",
     ]
     for name, index, cfg in rows:
+        if not cfg:
+            continue
         cells = [cell([val(it, m, k) for it in cfg.values()])
                  for m, k in (("hit", 5), ("recall", 5), ("ndcg", 5), ("mrr", None))]
         out.append(f"| {name} | {index} | " + " | ".join(cells) + " |")
     out.append("")
-    out.append("Values are mean [95% bootstrap confidence interval]. The first nine rows use no "
-               "reranker; the cross-encoder row is the cleaned index with 20 candidates.")
+    out.append("Values are mean [95% bootstrap confidence interval]. Rows without the cross-encoder "
+               "use plain dense or lexical retrieval; the cross-encoder rows apply bge-reranker-base "
+               "to 20 candidates of 256 tokens on the same index.")
     out.append("")
 
     # Таблица 3. Стратификация

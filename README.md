@@ -4,9 +4,17 @@ RAG over the CDISC SDTM / SDTMIG documentation. Local embeddings and reranking (
 
 The project answers questions about the SDTM standard and the SDTM Implementation
 Guide (SDTMIG) — including the laboratory test results (LB) domain — citing the
-source documents. Particular attention is paid to the two things almost everything
-in such systems depends on: **the quality of text extracted from PDF**, and
-**the measurability of retrieval and answer quality**.
+source documents. It also publishes the benchmark and the protocol used to evaluate
+it: **193 English questions whose locators are verbatim passages**, lexical, dense
+and hybrid retrievers over the same chunks, a closed-book control, and the
+statistical analysis behind every number in the accompanying manuscript.
+
+The short version of what the measurements show: **fusing lexical and dense
+retrieval is the only intervention with a large effect**, dense embeddings alone are
+not better than BM25 on this corpus, and cleaning the extracted PDF text — the stage
+pipelines usually invest in — does not improve retrieval, although it remains useful
+for display and de-duplication. Citation metadata was repaired by validating section
+headings in the chunker, not by cleaning.
 
 ## Requirements
 
